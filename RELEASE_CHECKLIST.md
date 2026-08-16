@@ -40,6 +40,8 @@ This is required before submission. Test in the current Chrome Stable release, n
 
 Chrome Web Store does not require a GitHub repository. ChatShade has chosen to use one as a trust, privacy, support, and source-transparency asset.
 
+Repository: <https://github.com/StevenGrow/ChatShade>
+
 - [x] Choose a long-term GitHub account or organization to own the project.
 - [x] Create a public repository named `ChatShade`.
 - [x] Exclude `.idea/`, `.DS_Store`, and local ZIP packages through `.gitignore`.
@@ -48,8 +50,8 @@ Chrome Web Store does not require a GitHub repository. ChatShade has chosen to u
 - [x] State that the ChatShade name, logo, and brand assets are not granted as trademarks.
 - [x] Enable GitHub Issues.
 - [ ] Add repository topics such as `chrome-extension`, `manifest-v3`, `chatgpt`, and `accessibility`.
-- [ ] Push the source after the final Chrome test passes.
-- [ ] Confirm `PRIVACY.md` has a stable public URL.
+- [x] Push the release-candidate source to the public repository.
+- [x] Confirm `PRIVACY.md` has a stable public URL.
 - [ ] Use the repository URL as the project website in the Chrome Web Store.
 - [ ] Use GitHub Issues as the initial support URL.
 - [ ] Create the `v0.1.0` tag from the exact source uploaded to the store.
@@ -58,11 +60,16 @@ Suggested first-push commands after creating an empty GitHub repository:
 
 ```bash
 git init
-git add .gitignore manifest.json content popup icons README.md PRIVACY.md RELEASE_CHECKLIST.md LICENSE
-git commit -m "Release ChatShade v0.1.0"
+git add .gitignore manifest.json content popup icons README.md PRIVACY.md RELEASE_CHECKLIST.md LICENSE TRADEMARKS.md
+git commit -m "Initial ChatShade release candidate"
 git branch -M main
 git remote add origin <GITHUB_REPOSITORY_URL>
 git push -u origin main
+```
+
+Create the release tag only after final Chrome testing and store package verification:
+
+```bash
 git tag v0.1.0
 git push origin v0.1.0
 ```

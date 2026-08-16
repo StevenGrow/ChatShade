@@ -1,0 +1,229 @@
+:root {
+  --chatshade-page-bg: #f7f1e8;
+  --chatshade-surface-bg: #fffaf0;
+  --chatshade-text-color: #2f2a24;
+  --chatshade-muted-bg: color-mix(in srgb, var(--chatshade-page-bg) 86%, var(--chatshade-text-color) 14%);
+  --chatshade-sidebar-bg: color-mix(in srgb, var(--chatshade-page-bg) 82%, var(--chatshade-text-color) 18%);
+  --chatshade-sidebar-item-bg: color-mix(in srgb, var(--chatshade-page-bg) 75%, var(--chatshade-text-color) 25%);
+  --chatshade-sidebar-hover-bg: color-mix(in srgb, var(--chatshade-page-bg) 70%, var(--chatshade-text-color) 30%);
+  --chatshade-border-color: color-mix(in srgb, var(--chatshade-page-bg) 72%, var(--chatshade-text-color) 28%);
+}
+
+html[data-chatshade-enabled="true"] {
+  --main-surface-primary: var(--chatshade-page-bg) !important;
+  --main-surface-secondary: var(--chatshade-surface-bg) !important;
+  --main-surface-tertiary: var(--chatshade-muted-bg) !important;
+  --bg-primary: var(--chatshade-page-bg) !important;
+  --bg-secondary: var(--chatshade-surface-bg) !important;
+  --bg-tertiary: var(--chatshade-muted-bg) !important;
+  --composer-surface-primary: var(--chatshade-surface-bg) !important;
+  --sidebar-surface-primary: var(--chatshade-sidebar-bg) !important;
+  --sidebar-surface-secondary: var(--chatshade-sidebar-item-bg) !important;
+  --sidebar-surface-tertiary: var(--chatshade-sidebar-hover-bg) !important;
+  --surface-primary: var(--chatshade-surface-bg) !important;
+  --surface-secondary: var(--chatshade-muted-bg) !important;
+  --text-primary: var(--chatshade-text-color) !important;
+  --text-secondary: color-mix(in srgb, var(--chatshade-text-color) 78%, var(--chatshade-page-bg) 22%) !important;
+  --text-tertiary: color-mix(in srgb, var(--chatshade-text-color) 58%, var(--chatshade-page-bg) 42%) !important;
+}
+
+html[data-chatshade-enabled="true"],
+html[data-chatshade-enabled="true"] body,
+html[data-chatshade-enabled="true"] #__next,
+html[data-chatshade-enabled="true"] #root {
+  background: var(--chatshade-page-bg) !important;
+  color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] body {
+  color-scheme: light;
+}
+
+html[data-chatshade-enabled="true"][data-chatshade-scheme="dark"] body {
+  color-scheme: dark;
+}
+
+html[data-chatshade-enabled="true"] * {
+  border-color: var(--chatshade-border-color);
+}
+
+html[data-chatshade-enabled="true"] main,
+html[data-chatshade-enabled="true"] [role="main"],
+html[data-chatshade-enabled="true"] div[class*="thread"],
+html[data-chatshade-enabled="true"] div[class*="conversation"] {
+  background: var(--chatshade-page-bg) !important;
+  color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] main article,
+html[data-chatshade-enabled="true"] [data-testid*="conversation-turn"],
+html[data-chatshade-enabled="true"] [data-message-author-role],
+html[data-chatshade-enabled="true"] [role="main"] article {
+  background-color: transparent !important;
+  color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] main article > div,
+html[data-chatshade-enabled="true"] [data-testid*="conversation-turn"] > div,
+html[data-chatshade-enabled="true"] [data-message-author-role="assistant"],
+html[data-chatshade-enabled="true"] [data-message-author-role="assistant"] > div,
+html[data-chatshade-enabled="true"] [data-message-author-role="assistant"] [class*="markdown"] {
+  background-color: transparent;
+}
+
+html[data-chatshade-enabled="true"] main article [class*="markdown"],
+html[data-chatshade-enabled="true"] [data-message-author-role] [class*="markdown"],
+html[data-chatshade-enabled="true"] [data-testid*="conversation-turn"] [class*="markdown"] {
+  color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] main :is(div, section):has(form),
+html[data-chatshade-enabled="true"] [role="main"] :is(div, section):has(form),
+html[data-chatshade-enabled="true"] main :is(div, section):has([role="textbox"]),
+html[data-chatshade-enabled="true"] [role="main"] :is(div, section):has([role="textbox"]) {
+  --main-surface-primary: var(--chatshade-page-bg) !important;
+  --surface-primary: var(--chatshade-page-bg) !important;
+  --bg-primary: var(--chatshade-page-bg) !important;
+  background-color: var(--chatshade-page-bg) !important;
+  background-image: none !important;
+}
+
+html[data-chatshade-enabled="true"] main :is(div, section):has(form)::before,
+html[data-chatshade-enabled="true"] main :is(div, section):has(form)::after,
+html[data-chatshade-enabled="true"] [role="main"] :is(div, section):has(form)::before,
+html[data-chatshade-enabled="true"] [role="main"] :is(div, section):has(form)::after {
+  background-color: var(--chatshade-page-bg) !important;
+  background-image: none !important;
+}
+
+html[data-chatshade-enabled="true"] form,
+html[data-chatshade-enabled="true"] textarea,
+html[data-chatshade-enabled="true"] [contenteditable="true"],
+html[data-chatshade-enabled="true"] [role="textbox"],
+html[data-chatshade-enabled="true"] div[class*="composer"],
+html[data-chatshade-enabled="true"] div[class*="prompt"] {
+  background-color: var(--chatshade-surface-bg) !important;
+  color: var(--chatshade-text-color) !important;
+  caret-color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] textarea::placeholder,
+html[data-chatshade-enabled="true"] [contenteditable="true"][data-placeholder]::before {
+  color: color-mix(in srgb, var(--chatshade-text-color) 58%, var(--chatshade-page-bg) 42%) !important;
+}
+
+html[data-chatshade-enabled="true"] nav,
+html[data-chatshade-enabled="true"] aside {
+  background-color: var(--chatshade-sidebar-bg) !important;
+  color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] header,
+html[data-chatshade-enabled="true"] footer {
+  background-color: var(--chatshade-muted-bg) !important;
+  color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] main footer,
+html[data-chatshade-enabled="true"] [role="main"] footer {
+  background-color: transparent !important;
+  background-image: none !important;
+  color: color-mix(in srgb, var(--chatshade-text-color) 48%, var(--chatshade-page-bg) 52%) !important;
+}
+
+/* ChatGPT renders the disclaimer as its own sticky grid item, outside <footer>. */
+html[data-chatshade-enabled="true"] :is(div, section):has(> [data-testid="thread-disclaimer"]),
+html[data-chatshade-enabled="true"] [data-testid="thread-disclaimer"],
+html[data-chatshade-enabled="true"] [data-testid="thread-disclaimer"] > div {
+  background-color: var(--chatshade-page-bg) !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+html[data-chatshade-enabled="true"] [data-testid="thread-disclaimer"] > div::before,
+html[data-chatshade-enabled="true"] [data-testid="thread-disclaimer"] > div::after,
+html[data-chatshade-enabled="true"] [data-testid="thread-disclaimer"] > div > div {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+html[data-chatshade-enabled="true"] [data-testid="thread-disclaimer"] {
+  color: color-mix(in srgb, var(--chatshade-text-color) 48%, var(--chatshade-page-bg) 52%) !important;
+}
+
+html[data-chatshade-enabled="true"] main :is([class*="bottom-0"], [class*="sticky"], [class*="fixed"], [class*="absolute"]) {
+  --main-surface-primary: var(--chatshade-page-bg) !important;
+  --surface-primary: var(--chatshade-page-bg) !important;
+}
+
+html[data-chatshade-enabled="true"] main :is([class*="bottom-0"], [class*="sticky"], [class*="fixed"], [class*="absolute"]):is([class*="bg-white"], [class*="bg-token-main-surface-primary"], [class*="bg-token-main-surface-secondary"], [class*="bg-gradient"]),
+html[data-chatshade-enabled="true"] main :is([class*="bottom-0"], [class*="sticky"], [class*="fixed"], [class*="absolute"]) :is([class*="bg-white"], [class*="bg-token-main-surface-primary"], [class*="bg-token-main-surface-secondary"], [class*="bg-gradient"]) {
+  background-color: var(--chatshade-page-bg) !important;
+  background-image: none !important;
+}
+
+html[data-chatshade-enabled="true"] main :is([class*="bottom-0"], [class*="sticky"], [class*="fixed"], [class*="absolute"]):is([class*="from-white"], [class*="from-token-main-surface-primary"], [class*="from-token-main-surface-secondary"]),
+html[data-chatshade-enabled="true"] main :is([class*="bottom-0"], [class*="sticky"], [class*="fixed"], [class*="absolute"]) :is([class*="from-white"], [class*="from-token-main-surface-primary"], [class*="from-token-main-surface-secondary"]) {
+  --tw-gradient-from: var(--chatshade-page-bg) !important;
+  --tw-gradient-to: color-mix(in srgb, var(--chatshade-page-bg) 0%, transparent) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+html[data-chatshade-enabled="true"] nav > div:first-child,
+html[data-chatshade-enabled="true"] nav > div:last-child,
+html[data-chatshade-enabled="true"] aside > div:first-child,
+html[data-chatshade-enabled="true"] aside > div:last-child,
+html[data-chatshade-enabled="true"] nav [class*="sticky"],
+html[data-chatshade-enabled="true"] aside [class*="sticky"],
+html[data-chatshade-enabled="true"] nav [class*="bottom"],
+html[data-chatshade-enabled="true"] aside [class*="bottom"] {
+  background-color: var(--chatshade-sidebar-bg) !important;
+  color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] nav :is(a, button, [role="button"], [role="menuitem"]),
+html[data-chatshade-enabled="true"] aside :is(a, button, [role="button"], [role="menuitem"]) {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] nav :is(a, button, [role="button"], [role="menuitem"]):is(:hover, :focus-visible, [aria-current="page"], [data-active="true"]),
+html[data-chatshade-enabled="true"] aside :is(a, button, [role="button"], [role="menuitem"]):is(:hover, :focus-visible, [aria-current="page"], [data-active="true"]) {
+  background-color: var(--chatshade-sidebar-item-bg) !important;
+}
+
+html[data-chatshade-enabled="true"] nav :is(a, button, [role="button"], [role="menuitem"]):hover,
+html[data-chatshade-enabled="true"] aside :is(a, button, [role="button"], [role="menuitem"]):hover {
+  background-color: var(--chatshade-sidebar-hover-bg) !important;
+}
+
+html[data-chatshade-enabled="true"] nav :is(a, button, [role="button"], [role="menuitem"]) *,
+html[data-chatshade-enabled="true"] aside :is(a, button, [role="button"], [role="menuitem"]) * {
+  box-shadow: none !important;
+}
+
+html[data-chatshade-enabled="true"] main footer *,
+html[data-chatshade-enabled="true"] [role="main"] footer * {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+html[data-chatshade-enabled="true"] button,
+html[data-chatshade-enabled="true"] a,
+html[data-chatshade-enabled="true"] [role="button"],
+html[data-chatshade-enabled="true"] [role="menuitem"] {
+  color: var(--chatshade-text-color);
+}
+
+html[data-chatshade-enabled="true"] pre,
+html[data-chatshade-enabled="true"] code {
+  background-color: color-mix(in srgb, var(--chatshade-surface-bg) 78%, var(--chatshade-text-color) 22%) !important;
+  color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] ::selection {
+  background: color-mix(in srgb, var(--chatshade-text-color) 24%, transparent);
+  color: var(--chatshade-text-color);
+}

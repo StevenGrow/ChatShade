@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ChatShade</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="popup-shell">
+      <header class="header">
+        <div>
+          <p class="eyebrow">柔光对话</p>
+          <h1>ChatShade</h1>
+          <p class="tagline">A calmer space for longer conversations.</p>
+        </div>
+        <label class="switch" for="enabledToggle">
+          <span class="switch-text">启用</span>
+          <input id="enabledToggle" type="checkbox" role="switch" aria-label="启用 ChatShade">
+          <span class="switch-track" aria-hidden="true">
+            <span class="switch-thumb"></span>
+          </span>
+        </label>
+      </header>
+
+      <section class="section" aria-labelledby="presetTitle">
+        <h2 id="presetTitle">预设主题</h2>
+        <div class="preset-grid" id="presetGrid" role="radiogroup" aria-label="预设主题"></div>
+      </section>
+
+      <section class="section" aria-labelledby="customTitle">
+        <h2 id="customTitle">自定义颜色</h2>
+        <div class="field-list">
+          <label class="color-field">
+            <span>页面主背景色</span>
+            <input id="pageBackground" type="color" aria-label="页面主背景色">
+          </label>
+          <label class="color-field">
+            <span>对话内容区域背景色</span>
+            <input id="surfaceBackground" type="color" aria-label="对话内容区域背景色">
+          </label>
+          <label class="color-field">
+            <span>主要文字颜色</span>
+            <input id="textColor" type="color" aria-label="主要文字颜色">
+          </label>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <button id="resetButton" type="button">恢复默认</button>
+        <p id="saveStatus" class="save-status" role="status" aria-live="polite" hidden></p>
+        <p>主题设置仅保存在 Chrome 扩展存储中。</p>
+      </footer>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

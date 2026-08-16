@@ -176,8 +176,21 @@ html[data-chatshade-enabled="true"] [data-testid="thread-disclaimer"] > div > di
   background-image: none !important;
 }
 
-html[data-chatshade-enabled="true"] [data-testid="thread-disclaimer"] {
+html[data-chatshade-enabled="true"] [data-testid="thread-disclaimer"],
+html[data-chatshade-enabled="true"] [data-testid="thread-disclaimer"] * {
   color: color-mix(in srgb, var(--chatshade-text-color) 48%, var(--chatshade-page-bg) 52%) !important;
+}
+
+html[data-chatshade-enabled="true"] [data-testid="thread-disclaimer"] *,
+html[data-chatshade-enabled="true"] [data-testid="thread-disclaimer"] *::before,
+html[data-chatshade-enabled="true"] [data-testid="thread-disclaimer"] *::after {
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
 }
 
 html[data-chatshade-enabled="true"] main :is([class*="bottom-0"], [class*="sticky"], [class*="fixed"], [class*="absolute"]) {

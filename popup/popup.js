@@ -6,7 +6,7 @@ const SAVE_DELAY_MS = 500;
 const PRESETS = [
   {
     id: "soft-ivory",
-    name: "柔和米白",
+    nameMessage: "presetSoftIvory",
     colors: {
       pageBackground: "#f7f1e8",
       surfaceBackground: "#fbf5eb",
@@ -15,7 +15,7 @@ const PRESETS = [
   },
   {
     id: "warm-gray",
-    name: "暖灰",
+    nameMessage: "presetWarmGray",
     colors: {
       pageBackground: "#ebe7df",
       surfaceBackground: "#f1ede5",
@@ -24,7 +24,7 @@ const PRESETS = [
   },
   {
     id: "eye-green",
-    name: "护眼绿",
+    nameMessage: "presetEyeGreen",
     colors: {
       pageBackground: "#eaf3e6",
       surfaceBackground: "#eef6ea",
@@ -33,7 +33,7 @@ const PRESETS = [
   },
   {
     id: "mist-blue",
-    name: "雾蓝灰",
+    nameMessage: "presetMistBlue",
     colors: {
       pageBackground: "#e7edf0",
       surfaceBackground: "#f1f5f5",
@@ -66,6 +66,23 @@ let currentSettings = { ...DEFAULT_SETTINGS, colors: { ...DEFAULT_SETTINGS.color
 let pendingSaveTimer = null;
 let pendingSettings = null;
 let latestSaveRequestId = 0;
+
+function getMessage(messageName) {
+  return chrome.i18n.getMessage(messageName) || messageName;
+}
+
+function localizePopup() {
+  document.documentElement.lang = chrome.i18n.getUILanguage() || "en";
+  document.documentElement.dir = chrome.i18n.getMessage("@@bidi_dir") || "ltr";
+
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    element.textContent = getMessage(element.dataset.i18n);
+  });
+
+  document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+    element.setAttribute("aria-label", getMessage(element.dataset.i18nAriaLabel));
+  });
+}
 
 function cloneSettings(settings) {
   return {
@@ -117,20 +134,29 @@ function findPresetIdByColors(colors) {
   return match ? match.id : "custom";
 }
 
+function selectPreset(preset) {
+  updateSettings({
+    ...currentSettings,
+    presetId: preset.id,
+    colors: { ...preset.colors }
+  });
+}
+
 function renderPresetCards() {
   elements.presetGrid.textContent = "";
 
-  PRESETS.forEach((preset) => {
+  PRESETS.forEach((preset, index) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "preset-card";
     button.dataset.presetId = preset.id;
     button.setAttribute("role", "radio");
     button.setAttribute("aria-checked", "false");
+    button.tabIndex = index === 0 ? 0 : -1;
 
     const name = document.createElement("span");
     name.className = "preset-name";
-    name.textContent = preset.name;
+    name.textContent = getMessage(preset.nameMessage);
 
     const swatches = document.createElement("span");
     swatches.className = "swatches";
@@ -144,13 +170,7 @@ function renderPresetCards() {
     });
 
     button.append(name, swatches);
-    button.addEventListener("click", () => {
-      updateSettings({
-        ...currentSettings,
-        presetId: preset.id,
-        colors: { ...preset.colors }
-      });
-    });
+    button.addEventListener("click", () => selectPreset(preset));
 
     elements.presetGrid.append(button);
   });
@@ -158,6 +178,7 @@ function renderPresetCards() {
 
 function renderSettings(settings) {
   const selectedPresetId = findPresetIdByColors(settings.colors);
+  const focusablePresetId = selectedPresetId === "custom" ? PRESETS[0].id : selectedPresetId;
 
   elements.enabledToggle.checked = settings.enabled;
   elements.pageBackground.value = settings.colors.pageBackground;
@@ -167,6 +188,7 @@ function renderSettings(settings) {
   document.querySelectorAll(".preset-card").forEach((button) => {
     const isSelected = button.dataset.presetId === selectedPresetId;
     button.setAttribute("aria-checked", String(isSelected));
+    button.tabIndex = button.dataset.presetId === focusablePresetId ? 0 : -1;
   });
 }
 
@@ -189,7 +211,7 @@ function saveSettings(settings) {
       console.error("ChatShade could not save settings.", error);
 
       if (requestId === latestSaveRequestId) {
-        setSaveError("设置保存失败，请重试。");
+        setSaveError(getMessage("saveError"));
       }
     });
 }
@@ -252,7 +274,47 @@ function handleColorChange(event) {
   updateColorSetting(event, false);
 }
 
+function handlePresetKeydown(event) {
+  const buttons = Array.from(elements.presetGrid.querySelectorAll(".preset-card"));
+  const currentIndex = buttons.indexOf(document.activeElement);
+
+  if (currentIndex === -1) {
+    return;
+  }
+
+  let nextIndex;
+
+  switch (event.key) {
+    case "ArrowLeft":
+      nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+      break;
+    case "ArrowRight":
+      nextIndex = (currentIndex + 1) % buttons.length;
+      break;
+    case "ArrowUp":
+      nextIndex = (currentIndex - 2 + buttons.length) % buttons.length;
+      break;
+    case "ArrowDown":
+      nextIndex = (currentIndex + 2) % buttons.length;
+      break;
+    case "Home":
+      nextIndex = 0;
+      break;
+    case "End":
+      nextIndex = buttons.length - 1;
+      break;
+    default:
+      return;
+  }
+
+  event.preventDefault();
+  buttons[nextIndex].focus();
+  buttons[nextIndex].click();
+}
+
 function bindEvents() {
+  elements.presetGrid.addEventListener("keydown", handlePresetKeydown);
+
   elements.enabledToggle.addEventListener("change", () => {
     updateSettings({
       ...currentSettings,
@@ -291,6 +353,7 @@ function loadSettings() {
   });
 }
 
+localizePopup();
 renderPresetCards();
 bindEvents();
 loadSettings();

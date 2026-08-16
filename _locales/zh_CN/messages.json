@@ -1,0 +1,82 @@
+{
+  "extensionName": {
+    "message": "ChatShade",
+    "description": "扩展名称"
+  },
+  "extensionDescription": {
+    "message": "为 ChatGPT 提供更柔和舒适的长时间阅读配色。",
+    "description": "扩展简短说明"
+  },
+  "extensionActionTitle": {
+    "message": "打开 ChatShade",
+    "description": "工具栏按钮提示"
+  },
+  "brandEyebrow": {
+    "message": "柔光对话",
+    "description": "扩展名称上方的品牌文字"
+  },
+  "tagline": {
+    "message": "让每一次长谈，都不再刺眼。",
+    "description": "产品宣传语"
+  },
+  "enabledLabel": {
+    "message": "启用",
+    "description": "启用开关标签"
+  },
+  "enableAriaLabel": {
+    "message": "启用 ChatShade",
+    "description": "启用开关的无障碍标签"
+  },
+  "presetSectionTitle": {
+    "message": "预设主题",
+    "description": "预设主题区域标题"
+  },
+  "presetGroupAriaLabel": {
+    "message": "预设主题",
+    "description": "预设主题组的无障碍标签"
+  },
+  "presetSoftIvory": {
+    "message": "柔和米白",
+    "description": "柔和米白主题名称"
+  },
+  "presetWarmGray": {
+    "message": "暖灰",
+    "description": "暖灰主题名称"
+  },
+  "presetEyeGreen": {
+    "message": "护眼绿",
+    "description": "护眼绿主题名称"
+  },
+  "presetMistBlue": {
+    "message": "雾蓝灰",
+    "description": "雾蓝灰主题名称"
+  },
+  "customColorsTitle": {
+    "message": "自定义颜色",
+    "description": "自定义颜色区域标题"
+  },
+  "pageBackgroundLabel": {
+    "message": "页面主背景色",
+    "description": "页面主背景颜色控件标签"
+  },
+  "surfaceBackgroundLabel": {
+    "message": "对话内容区域背景色",
+    "description": "对话内容区域颜色控件标签"
+  },
+  "textColorLabel": {
+    "message": "主要文字颜色",
+    "description": "主要文字颜色控件标签"
+  },
+  "resetButton": {
+    "message": "恢复默认",
+    "description": "恢复默认设置按钮"
+  },
+  "privacyNote": {
+    "message": "主题设置仅保存在 Chrome 扩展存储中。",
+    "description": "简短存储与隐私说明"
+  },
+  "saveError": {
+    "message": "设置保存失败，请重试。",
+    "description": "设置保存失败提示"
+  }
+}

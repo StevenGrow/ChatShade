@@ -14,11 +14,12 @@ ChatShade is an independent third-party browser extension and is not affiliated 
 
 - Runs only on `https://chatgpt.com/*`.
 - One switch to enable or disable ChatShade.
+- English and Simplified Chinese UI that follows the Chrome interface language.
 - Four built-in presets:
-  - 柔和米白
-  - 暖灰
-  - 护眼绿
-  - 雾蓝灰
+  - Soft Ivory / 柔和米白
+  - Warm Gray / 暖灰
+  - Restful Green / 护眼绿
+  - Mist Blue / 雾蓝灰
 - Custom color pickers for:
   - Page background
   - Conversation/content surface
@@ -32,6 +33,9 @@ ChatShade is an independent third-party browser extension and is not affiliated 
 
 ```text
 ChatShade/
+├── _locales/
+│   ├── en/messages.json
+│   └── zh_CN/messages.json
 ├── manifest.json
 ├── content/
 │   ├── content.js
@@ -47,10 +51,16 @@ ChatShade/
 │   └── icon-128.png
 ├── LICENSE
 ├── TRADEMARKS.md
+├── KNOWN_ISSUES.md
 ├── RELEASE_CHECKLIST.md
 ├── README.md
-└── PRIVACY.md
+├── PRIVACY.md
+└── PRIVACY.zh-CN.md
 ```
+
+## Language Support
+
+ChatShade uses Chrome's native `chrome.i18n` API. English is the default locale, Simplified Chinese is provided through `zh_CN`, and unsupported Chrome interface languages fall back to English. The extension does not download translations or other remote resources.
 
 ## Key Design Notes
 
@@ -121,6 +131,7 @@ After code changes:
 - Prepare store screenshots after real-page visual tuning.
 - Keep the permission set minimal: `storage` plus `https://chatgpt.com/*`.
 - Do not add remote scripts, analytics, or network requests.
+- Track accepted visual compatibility limitations in [KNOWN_ISSUES.md](KNOWN_ISSUES.md).
 
 ## Support
 

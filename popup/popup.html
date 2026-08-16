@@ -1,22 +1,22 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ChatShade</title>
+    <title data-i18n="extensionName">ChatShade</title>
     <link rel="stylesheet" href="popup.css">
   </head>
   <body>
     <main class="popup-shell">
       <header class="header">
         <div>
-          <p class="eyebrow">柔光对话</p>
-          <h1>ChatShade</h1>
-          <p class="tagline">A calmer space for longer conversations.</p>
+          <p class="eyebrow" data-i18n="brandEyebrow">Calm conversations</p>
+          <h1 data-i18n="extensionName">ChatShade</h1>
+          <p class="tagline" data-i18n="tagline">A calmer space for longer conversations.</p>
         </div>
         <label class="switch" for="enabledToggle">
-          <span class="switch-text">启用</span>
-          <input id="enabledToggle" type="checkbox" role="switch" aria-label="启用 ChatShade">
+          <span class="switch-text" data-i18n="enabledLabel">Enable</span>
+          <input id="enabledToggle" type="checkbox" role="switch" aria-label="Enable ChatShade" data-i18n-aria-label="enableAriaLabel">
           <span class="switch-track" aria-hidden="true">
             <span class="switch-thumb"></span>
           </span>
@@ -24,32 +24,32 @@
       </header>
 
       <section class="section" aria-labelledby="presetTitle">
-        <h2 id="presetTitle">预设主题</h2>
-        <div class="preset-grid" id="presetGrid" role="radiogroup" aria-label="预设主题"></div>
+        <h2 id="presetTitle" data-i18n="presetSectionTitle">Preset themes</h2>
+        <div class="preset-grid" id="presetGrid" role="radiogroup" aria-label="Preset themes" data-i18n-aria-label="presetGroupAriaLabel"></div>
       </section>
 
       <section class="section" aria-labelledby="customTitle">
-        <h2 id="customTitle">自定义颜色</h2>
+        <h2 id="customTitle" data-i18n="customColorsTitle">Custom colors</h2>
         <div class="field-list">
           <label class="color-field">
-            <span>页面主背景色</span>
-            <input id="pageBackground" type="color" aria-label="页面主背景色">
+            <span data-i18n="pageBackgroundLabel">Page background</span>
+            <input id="pageBackground" type="color" aria-label="Page background" data-i18n-aria-label="pageBackgroundLabel">
           </label>
           <label class="color-field">
-            <span>对话内容区域背景色</span>
-            <input id="surfaceBackground" type="color" aria-label="对话内容区域背景色">
+            <span data-i18n="surfaceBackgroundLabel">Conversation surface</span>
+            <input id="surfaceBackground" type="color" aria-label="Conversation surface" data-i18n-aria-label="surfaceBackgroundLabel">
           </label>
           <label class="color-field">
-            <span>主要文字颜色</span>
-            <input id="textColor" type="color" aria-label="主要文字颜色">
+            <span data-i18n="textColorLabel">Primary text</span>
+            <input id="textColor" type="color" aria-label="Primary text" data-i18n-aria-label="textColorLabel">
           </label>
         </div>
       </section>
 
       <footer class="footer">
-        <button id="resetButton" type="button">恢复默认</button>
+        <button id="resetButton" type="button" data-i18n="resetButton">Reset to defaults</button>
         <p id="saveStatus" class="save-status" role="status" aria-live="polite" hidden></p>
-        <p>主题设置仅保存在 Chrome 扩展存储中。</p>
+        <p data-i18n="privacyNote">Theme settings stay in Chrome extension storage.</p>
       </footer>
     </main>
 

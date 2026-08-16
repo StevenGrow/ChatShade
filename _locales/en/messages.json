@@ -1,0 +1,82 @@
+{
+  "extensionName": {
+    "message": "ChatShade",
+    "description": "Extension name"
+  },
+  "extensionDescription": {
+    "message": "A calmer space for longer conversations on ChatGPT.",
+    "description": "Short extension description"
+  },
+  "extensionActionTitle": {
+    "message": "Open ChatShade",
+    "description": "Toolbar action tooltip"
+  },
+  "brandEyebrow": {
+    "message": "Calm conversations",
+    "description": "Small brand label above the extension name"
+  },
+  "tagline": {
+    "message": "A calmer space for longer conversations.",
+    "description": "Product tagline"
+  },
+  "enabledLabel": {
+    "message": "Enable",
+    "description": "Label next to the enable switch"
+  },
+  "enableAriaLabel": {
+    "message": "Enable ChatShade",
+    "description": "Accessible label for the enable switch"
+  },
+  "presetSectionTitle": {
+    "message": "Preset themes",
+    "description": "Preset section heading"
+  },
+  "presetGroupAriaLabel": {
+    "message": "Preset themes",
+    "description": "Accessible label for the preset theme group"
+  },
+  "presetSoftIvory": {
+    "message": "Soft ivory",
+    "description": "Soft ivory theme name"
+  },
+  "presetWarmGray": {
+    "message": "Warm gray",
+    "description": "Warm gray theme name"
+  },
+  "presetEyeGreen": {
+    "message": "Restful green",
+    "description": "Eye-friendly green theme name"
+  },
+  "presetMistBlue": {
+    "message": "Mist blue",
+    "description": "Mist blue-gray theme name"
+  },
+  "customColorsTitle": {
+    "message": "Custom colors",
+    "description": "Custom colors section heading"
+  },
+  "pageBackgroundLabel": {
+    "message": "Page background",
+    "description": "Page background color control label"
+  },
+  "surfaceBackgroundLabel": {
+    "message": "Conversation surface",
+    "description": "Conversation surface color control label"
+  },
+  "textColorLabel": {
+    "message": "Primary text",
+    "description": "Primary text color control label"
+  },
+  "resetButton": {
+    "message": "Reset to defaults",
+    "description": "Reset settings button"
+  },
+  "privacyNote": {
+    "message": "Theme settings stay in Chrome extension storage.",
+    "description": "Short storage and privacy note"
+  },
+  "saveError": {
+    "message": "Settings could not be saved. Try again.",
+    "description": "Settings save failure message"
+  }
+}

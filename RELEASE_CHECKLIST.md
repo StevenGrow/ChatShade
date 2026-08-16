@@ -14,27 +14,27 @@ This checklist separates Chrome Web Store requirements from the additional launc
 - [x] Show an accessible error message when settings cannot be saved.
 - [x] Explain accurately that Chrome may sync settings through Chrome Sync.
 - [ ] Decide whether the current icon is final and remove the placeholder note from `README.md` if accepted.
-- [ ] Record the lighter composer input surface as a known `v0.1.x` visual improvement.
+- [x] Record the lighter composer input surface and new-conversation strip as known `v0.1.x` visual improvements.
 
 ## 2. Final Chrome Testing
 
 This is required before submission. Test in the current Chrome Stable release, not only in Brave or another Chromium browser.
 
-- [ ] Load the unpacked extension in a clean Chrome profile.
-- [ ] Confirm the extension installs without Manifest or runtime errors.
-- [ ] Test a new chat and a long existing conversation.
-- [ ] Test paragraphs, headings, lists, blockquotes, tables, inline code, and code blocks.
-- [ ] Test all four presets.
-- [ ] Test all three custom color controls.
-- [ ] Confirm color changes appear quickly while the picker is being used.
-- [ ] Confirm the final color is saved after closing and reopening the Popup.
-- [ ] Confirm settings persist after refreshing ChatGPT and restarting Chrome.
-- [ ] Confirm Reset restores the default ChatShade theme.
-- [ ] Confirm disabling ChatShade removes all ChatShade styling.
-- [ ] Test the sidebar expanded and collapsed.
-- [ ] Test browser zoom at 100% and 125%.
-- [ ] Confirm typing, sending, scrolling, copying, and sidebar navigation still work.
-- [ ] Confirm the ChatGPT page console and Popup console contain no extension errors.
+- [x] Load the unpacked extension in a clean Chrome profile.
+- [x] Confirm the extension installs without Manifest or runtime errors.
+- [x] Test a new chat and a long existing conversation.
+- [x] Test paragraphs, headings, lists, blockquotes, tables, inline code, and code blocks.
+- [x] Test all four presets.
+- [x] Test all three custom color controls.
+- [x] Confirm color changes appear quickly while the picker is being used.
+- [x] Confirm the final color is saved after closing and reopening the Popup.
+- [x] Confirm settings persist after refreshing ChatGPT and restarting Chrome.
+- [x] Confirm Reset restores the default ChatShade theme.
+- [x] Confirm disabling ChatShade removes all ChatShade styling.
+- [x] Test the sidebar expanded and collapsed.
+- [x] Test browser zoom at 100% and 125%.
+- [x] Confirm typing, sending, scrolling, copying, and sidebar navigation still work.
+- [x] Confirm the ChatGPT page console and Popup console contain no extension errors.
 
 ## 3. Public GitHub Repository
 
@@ -92,14 +92,16 @@ Developer Dashboard:
 
 <https://chrome.google.com/webstore/devconsole>
 
-## 5. Launch Language Decision
+## 5. Launch Languages
 
-The current Popup is primarily Chinese while the Manifest description and tagline are English. Resolve this before preparing the listing.
-
-- [ ] Choose one launch approach:
-  - Chinese-first `v0.1.0`: use Chinese as the primary store language and show the current Chinese Popup accurately in screenshots.
-  - International `v0.1.0`: add Chinese and English extension localization before submission.
-- [ ] Ensure the store title, description, screenshots, and Popup language set the same expectation.
+- [x] Choose an international English and Simplified Chinese launch.
+- [x] Localize the Manifest and Popup through Chrome's native `chrome.i18n` API.
+- [x] Localize visible labels, preset names, error feedback, and accessibility attributes.
+- [x] Publish English and Simplified Chinese privacy policies.
+- [ ] Test the Popup with Chrome's interface language set to English.
+- [ ] Test the Popup with Chrome's interface language set to Simplified Chinese.
+- [ ] Prepare localized English and Simplified Chinese store descriptions.
+- [ ] Prepare screenshots that accurately match each store language.
 
 ## 6. Store Graphic Assets
 
@@ -165,7 +167,7 @@ Suggested ChatGPT site-access justification:
 Suggested packaging command from the project root:
 
 ```bash
-zip -r ChatShade-v0.1.0.zip manifest.json content popup icons README.md PRIVACY.md LICENSE
+zip -r ChatShade-v0.1.0.zip manifest.json _locales content popup icons README.md PRIVACY.md PRIVACY.zh-CN.md KNOWN_ISSUES.md LICENSE TRADEMARKS.md
 ```
 
 ## 9. Submit For Review

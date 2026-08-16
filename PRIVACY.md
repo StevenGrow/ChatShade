@@ -1,5 +1,7 @@
 # ChatShade Privacy Policy
 
+[简体中文](PRIVACY.zh-CN.md)
+
 ChatShade is designed to be privacy-friendly and local-first.
 
 ## What ChatShade Does Not Collect

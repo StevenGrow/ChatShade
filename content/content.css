@@ -77,6 +77,35 @@ html[data-chatshade-enabled="true"] [data-testid*="conversation-turn"] [class*="
   color: var(--chatshade-text-color) !important;
 }
 
+html[data-chatshade-enabled="true"] [data-message-author-role] :is(
+  p,
+  li,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  blockquote,
+  strong,
+  em,
+  del,
+  span,
+  a,
+  table,
+  thead,
+  tbody,
+  tr,
+  th,
+  td
+) {
+  color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] [data-message-author-role] a {
+  text-decoration-color: color-mix(in srgb, var(--chatshade-text-color) 55%, transparent) !important;
+}
+
 html[data-chatshade-enabled="true"] main :is(div, section):has(form),
 html[data-chatshade-enabled="true"] [role="main"] :is(div, section):has(form),
 html[data-chatshade-enabled="true"] main :is(div, section):has([role="textbox"]),

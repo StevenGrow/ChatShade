@@ -7,6 +7,7 @@ const PRESETS = [
   {
     id: "soft-ivory",
     nameMessage: "presetSoftIvory",
+    fallbackName: "Soft ivory",
     colors: {
       pageBackground: "#f7f1e8",
       surfaceBackground: "#fbf5eb",
@@ -16,6 +17,7 @@ const PRESETS = [
   {
     id: "warm-gray",
     nameMessage: "presetWarmGray",
+    fallbackName: "Warm gray",
     colors: {
       pageBackground: "#ebe7df",
       surfaceBackground: "#f1ede5",
@@ -25,6 +27,7 @@ const PRESETS = [
   {
     id: "eye-green",
     nameMessage: "presetEyeGreen",
+    fallbackName: "Restful green",
     colors: {
       pageBackground: "#eaf3e6",
       surfaceBackground: "#eef6ea",
@@ -34,6 +37,7 @@ const PRESETS = [
   {
     id: "mist-blue",
     nameMessage: "presetMistBlue",
+    fallbackName: "Mist blue",
     colors: {
       pageBackground: "#e7edf0",
       surfaceBackground: "#f1f5f5",
@@ -67,20 +71,20 @@ let pendingSaveTimer = null;
 let pendingSettings = null;
 let latestSaveRequestId = 0;
 
-function getMessage(messageName) {
-  return chrome.i18n.getMessage(messageName) || messageName;
+function getMessage(messageName, fallback = "") {
+  return chrome.i18n.getMessage(messageName) || fallback;
 }
 
 function localizePopup() {
   document.documentElement.lang = chrome.i18n.getUILanguage() || "en";
-  document.documentElement.dir = chrome.i18n.getMessage("@@bidi_dir") || "ltr";
+  document.documentElement.dir = getMessage("@@bidi_dir", "ltr");
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
-    element.textContent = getMessage(element.dataset.i18n);
+    element.textContent = getMessage(element.dataset.i18n, element.textContent);
   });
 
   document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
-    element.setAttribute("aria-label", getMessage(element.dataset.i18nAriaLabel));
+    element.setAttribute("aria-label", getMessage(element.dataset.i18nAriaLabel, element.getAttribute("aria-label")));
   });
 }
 
@@ -156,7 +160,7 @@ function renderPresetCards() {
 
     const name = document.createElement("span");
     name.className = "preset-name";
-    name.textContent = getMessage(preset.nameMessage);
+    name.textContent = getMessage(preset.nameMessage, preset.fallbackName);
 
     const swatches = document.createElement("span");
     swatches.className = "swatches";
@@ -211,7 +215,7 @@ function saveSettings(settings) {
       console.error("ChatShade could not save settings.", error);
 
       if (requestId === latestSaveRequestId) {
-        setSaveError(getMessage("saveError"));
+        setSaveError(getMessage("saveError", "Settings could not be saved. Try again."));
       }
     });
 }

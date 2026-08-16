@@ -35,6 +35,9 @@ This is required before submission. Test in the current Chrome Stable release, n
 - [x] Test browser zoom at 100% and 125%.
 - [x] Confirm typing, sending, scrolling, copying, and sidebar navigation still work.
 - [x] Confirm the ChatGPT page console and Popup console contain no extension errors.
+- [ ] Test all four themes while ChatGPT uses light mode.
+- [ ] Test all four themes while ChatGPT uses dark mode.
+- [ ] Test ChatGPT's system theme before and after the operating system appearance changes.
 
 ## 3. Public GitHub Repository
 

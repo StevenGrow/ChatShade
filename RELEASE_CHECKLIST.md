@@ -13,7 +13,7 @@ This checklist separates Chrome Web Store requirements from the additional launc
 - [x] Debounce color-picker writes to stay within Chrome Sync write limits.
 - [x] Show an accessible error message when settings cannot be saved.
 - [x] Explain accurately that Chrome may sync settings through Chrome Sync.
-- [ ] Decide whether the current icon is final and remove the placeholder note from `README.md` if accepted.
+- [x] Decide whether the current icon is final and remove the placeholder note from `README.md` if accepted.
 - [x] Record the lighter composer input surface and new-conversation strip as known `v0.1.x` visual improvements.
 
 ## 2. Final Chrome Testing
@@ -110,7 +110,7 @@ Developer Dashboard:
 
 Required assets:
 
-- [ ] Final 128 x 128 PNG store icon.
+- [x] Final 128 x 128 PNG store icon.
 - [ ] At least one 1280 x 800 screenshot. Three focused screenshots are recommended.
 - [ ] One 440 x 280 PNG or JPEG small promotional tile.
 

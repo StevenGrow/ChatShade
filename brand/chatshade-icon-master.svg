@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title description">
+  <title id="title">ChatShade icon candidate</title>
+  <desc id="description">A quiet companion sheltered beneath a broad soft-light shade.</desc>
+
+  <defs>
+    <clipPath id="tile-clip">
+      <rect x="128" y="128" width="768" height="768" rx="184" />
+    </clipPath>
+  </defs>
+
+  <rect x="128" y="128" width="768" height="768" rx="184" fill="#b8cbd6" />
+
+  <g clip-path="url(#tile-clip)">
+    <!-- The broad lower mass keeps the character stable when reduced. -->
+    <path
+      fill="#3d5d4d"
+      d="M459 681C500 711 815 717 873 681C909 734 942 814 966 912H413C420 819 436 738 459 681Z"
+    />
+
+    <!-- An asymmetric dome carries the memorable shade-and-hat silhouette. -->
+    <path
+      fill="#3d5d4d"
+      d="M281 649C289 540 366 356 514 255C644 166 808 181 898 310C958 396 978 516 951 594C939 633 915 666 881 691C752 653 452 653 314 685C292 679 279 666 281 649Z"
+    />
+
+    <!-- The warm band reads as both softened light and a sheltered face. -->
+    <path
+      fill="#f3e4c4"
+      d="M329 640C449 598 773 600 890 640C875 695 786 728 609 729C466 729 365 700 330 659C325 653 325 646 329 640Z"
+    />
+
+    <ellipse cx="574" cy="666" rx="26" ry="36" fill="#3d5d4d" />
+    <ellipse cx="748" cy="666" rx="26" ry="36" fill="#3d5d4d" />
+  </g>
+</svg>

@@ -40,6 +40,8 @@ ChatShade/
 ├── content/
 │   ├── content.js
 │   └── content.css
+├── brand/
+│   └── chatshade-icon-master.svg
 ├── popup/
 │   ├── popup.html
 │   ├── popup.css
@@ -127,7 +129,7 @@ After code changes:
 
 ## Release Notes For Future Store Prep
 
-- Replace the current simple placeholder icons with final branded icons before Chrome Web Store submission.
+- Keep future icon exports consistent with the editable source in `brand/chatshade-icon-master.svg`.
 - Prepare store screenshots after real-page visual tuning.
 - Keep the permission set minimal: `storage` plus `https://chatgpt.com/*`.
 - Do not add remote scripts, analytics, or network requests.

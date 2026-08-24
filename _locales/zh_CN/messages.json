@@ -72,7 +72,7 @@
     "description": "恢复默认设置按钮"
   },
   "privacyNote": {
-    "message": "主题设置仅保存在 Chrome 扩展存储中。",
+    "message": "主题设置仅保存在浏览器扩展存储中。",
     "description": "简短存储与隐私说明"
   },
   "saveError": {

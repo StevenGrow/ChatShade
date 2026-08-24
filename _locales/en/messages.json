@@ -72,7 +72,7 @@
     "description": "Reset settings button"
   },
   "privacyNote": {
-    "message": "Theme settings stay in Chrome extension storage.",
+    "message": "Theme settings stay in browser extension storage.",
     "description": "Short storage and privacy note"
   },
   "saveError": {

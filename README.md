@@ -6,15 +6,22 @@
 >
 > 让每一次长谈，都不再刺眼。
 
-ChatShade is a lightweight Chrome extension that softens the ChatGPT web interface with calmer background, conversation surface, and text colors. It is built as a small Manifest V3 extension with native HTML, CSS, and JavaScript.
+ChatShade is a lightweight browser extension for Chrome and Microsoft Edge that softens the ChatGPT web interface with calmer background, conversation surface, and text colors. It is built as a small Manifest V3 extension with native HTML, CSS, and JavaScript.
 
 ChatShade is an independent third-party browser extension and is not affiliated with or endorsed by OpenAI.
+
+## Install
+
+- [Install from the Chrome Web Store](https://chromewebstore.google.com/detail/chatshade/gnbjdekebgnifnnohilgefdikifdgbh)
+- [Install from Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/npknldohcppjbmiealoaelfahhpaokjb)
+
+The first public release is `v0.1.0`.
 
 ## MVP Features
 
 - Runs only on `https://chatgpt.com/*`.
 - One switch to enable or disable ChatShade.
-- English and Simplified Chinese UI that follows the Chrome interface language.
+- English and Simplified Chinese UI that follows the browser interface language.
 - Four built-in presets:
   - Soft Ivory / 柔和米白
   - Warm Gray / 暖灰
@@ -25,7 +32,7 @@ ChatShade is an independent third-party browser extension and is not affiliated 
   - Conversation/content surface
   - Primary text
 - Reset to default settings.
-- Settings persist through `chrome.storage.sync` and may follow the user through Chrome Sync.
+- Settings persist through `chrome.storage.sync` and may follow the user through browser profile sync.
 - Current ChatGPT tabs update quickly through storage change listeners.
 - No chat content is read, saved, uploaded, or analyzed.
 
@@ -56,13 +63,14 @@ ChatShade/
 ├── KNOWN_ISSUES.md
 ├── RELEASE_CHECKLIST.md
 ├── README.md
+├── PRIVACY-EDGE.md
 ├── PRIVACY.md
 └── PRIVACY.zh-CN.md
 ```
 
 ## Language Support
 
-ChatShade uses Chrome's native `chrome.i18n` API. English is the default locale, Simplified Chinese is provided through `zh_CN`, and unsupported Chrome interface languages fall back to English. The extension does not download translations or other remote resources.
+ChatShade uses the extension `chrome.i18n` API supported by Chromium-based browsers. English is the default locale, Simplified Chinese is provided through `zh_CN`, and unsupported browser interface languages fall back to English. The extension does not download translations or other remote resources.
 
 ## Key Design Notes
 
@@ -79,6 +87,8 @@ Selectors that may need real-page tuning later are intentionally kept in `conten
 
 ## Local Installation
 
+Chrome:
+
 1. Open Chrome.
 2. Go to `chrome://extensions`.
 3. Enable **Developer mode**.
@@ -88,11 +98,22 @@ Selectors that may need real-page tuning later are intentionally kept in `conten
 7. Click the ChatShade extension icon.
 8. Test the enable switch, preset themes, custom colors, and reset button.
 
+Microsoft Edge:
+
+1. Open Edge.
+2. Go to `edge://extensions`.
+3. Enable **Developer mode**.
+4. Click **Load unpacked**.
+5. Select this `ChatShade` folder.
+6. Open or refresh `https://chatgpt.com/`.
+7. Click the ChatShade extension icon.
+8. Test the same core flows as Chrome.
+
 ## Debugging
 
 Popup console:
 
-1. Go to `chrome://extensions`.
+1. Go to `chrome://extensions` or `edge://extensions`.
 2. Find ChatShade.
 3. Click **Inspect views** for the popup, or right-click the open popup and choose **Inspect** if available.
 
@@ -104,9 +125,9 @@ Content script console:
 
 Extension errors:
 
-1. Go to `chrome://extensions`.
+1. Go to `chrome://extensions` or `edge://extensions`.
 2. Find ChatShade.
-3. Check whether Chrome shows an **Errors** button.
+3. Check whether the browser shows an **Errors** button.
 
 After code changes:
 
@@ -127,13 +148,18 @@ After code changes:
 - Scrolling behavior.
 - Message typing and sending.
 
-## Release Notes For Future Store Prep
+## Roadmap And Known Issues
 
-- Keep future icon exports consistent with the editable source in `brand/chatshade-icon-master.svg`.
-- Prepare store screenshots after real-page visual tuning.
+Tracked compatibility notes and next-version ideas live in [KNOWN_ISSUES.md](KNOWN_ISSUES.md).
+
+Current priorities:
+
+- Keep Chrome and Edge compatibility stable as ChatGPT changes its page structure.
+- Fix the remaining new-conversation/composer surface visual issues without broad fragile selectors.
+- Consider Opera distribution after Chrome and Edge have a little more usage feedback.
+- Consider Firefox as a later dedicated compatibility project.
 - Keep the permission set minimal: `storage` plus `https://chatgpt.com/*`.
-- Do not add remote scripts, analytics, or network requests.
-- Track accepted visual compatibility limitations in [KNOWN_ISSUES.md](KNOWN_ISSUES.md).
+- Do not add remote scripts, analytics, telemetry, or network requests.
 
 ## Support
 

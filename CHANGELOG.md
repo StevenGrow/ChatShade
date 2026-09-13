@@ -9,6 +9,7 @@
 - Narrowed composer selectors so square positioning and dock containers stay transparent while the rounded input surface keeps its theme color.
 - Kept logged-in composer editing and layout layers transparent so they do not draw square inner blocks.
 - Restored contrast on the actual rounded composer surface and clipped its contents cleanly to that shape.
+- Themed the native Markdown code-block surface, including its language header and copy area, while keeping nested code layers transparent and preserving native rounded corners.
 - Tuned ChatGPT main-surface token handling to reduce light strips in new or short conversations.
 - Preserved ChatGPT's native light/dark contrast for signed-out authentication buttons.
 - Kept the permission set unchanged: `storage` plus `https://chatgpt.com/*`.

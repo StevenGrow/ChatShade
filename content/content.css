@@ -8,6 +8,7 @@
   --chatshade-sidebar-hover-bg: color-mix(in srgb, var(--chatshade-page-bg) 70%, var(--chatshade-text-color) 30%);
   --chatshade-border-color: color-mix(in srgb, var(--chatshade-page-bg) 72%, var(--chatshade-text-color) 28%);
   --chatshade-composer-bg: color-mix(in srgb, var(--chatshade-surface-bg) 94%, var(--chatshade-page-bg) 6%);
+  --chatshade-code-bg: color-mix(in srgb, var(--chatshade-surface-bg) 94%, var(--chatshade-text-color) 6%);
 }
 
 html[data-chatshade-enabled="true"] {
@@ -328,9 +329,24 @@ html[data-chatshade-enabled="true"] [data-mobile-auth-entry-point="mobile_chat_s
   color: inherit !important;
 }
 
-html[data-chatshade-enabled="true"] pre,
-html[data-chatshade-enabled="true"] code {
-  background-color: color-mix(in srgb, var(--chatshade-surface-bg) 78%, var(--chatshade-text-color) 22%) !important;
+html[data-chatshade-enabled="true"] [class*="markdown"] pre {
+  background: var(--chatshade-code-bg) !important;
+  color: var(--chatshade-text-color) !important;
+}
+
+/* The current viewer nests a second pre inside its own rounded surface. */
+html[data-chatshade-enabled="true"] [class*="markdown"] pre [class*="--code-block-surface"] {
+  --code-block-surface: var(--chatshade-code-bg) !important;
+}
+
+html[data-chatshade-enabled="true"] [class*="markdown"] pre:has([class*="--code-block-surface"]),
+html[data-chatshade-enabled="true"] [class*="markdown"] pre pre,
+html[data-chatshade-enabled="true"] [class*="markdown"] pre code {
+  background: transparent !important;
+}
+
+html[data-chatshade-enabled="true"] [class*="markdown"] code:not(pre code) {
+  background-color: var(--chatshade-code-bg) !important;
   color: var(--chatshade-text-color) !important;
 }
 

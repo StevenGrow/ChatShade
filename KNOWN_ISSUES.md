@@ -2,13 +2,19 @@
 
 ## New Or Short Conversations
 
-In some new or very short ChatGPT conversations, a wide lighter strip can appear in the empty area below the first assistant response. This is a cosmetic compatibility issue caused by ChatGPT's dynamic page layout. It does not affect reading, typing, sending messages, scrolling, theme persistence, or sidebar operation.
+`v0.2.0` adds more targeted rules for ChatGPT surface token classes to reduce the wide lighter strip that could appear in the empty area below the first assistant response. Keep this area on the regression list because ChatGPT's dynamic layout changes over time.
 
 ## Composer Surface
 
-The editable area inside the ChatGPT composer can appear slightly lighter than the surrounding ChatShade theme surface in some layouts.
+`v0.2.0` makes the editable field inside the ChatGPT composer transparent over the ChatShade composer surface, which should reduce the lighter inner-box effect seen in some layouts.
 
-Both issues are candidates for a `v0.1.x` compatibility update. Because ChatGPT's DOM changes over time, future fixes will use inspected semantic attributes where possible and avoid broad selectors that could interfere with page behavior.
+The composer frame now uses a theme-aware border and shadow instead of ChatGPT's black translucent outline. Its styling is limited to the real input surface so ChatGPT's square positioning and dock containers remain transparent. Recheck it after major ChatGPT composer layout changes.
+
+## Signed-Out Header Buttons
+
+`v0.2.0` leaves signed-out authentication button contrast to ChatGPT so those controls can follow the system light/dark appearance.
+
+Because ChatGPT's DOM changes over time, future fixes should continue to prefer inspected semantic attributes and narrowly scoped token/class fragments over broad selectors that could interfere with page behavior.
 
 ## Distribution Follow-Ups
 
@@ -17,9 +23,10 @@ Both issues are candidates for a `v0.1.x` compatibility update. Because ChatGPT'
 - Consider Opera as a low-cost Chromium distribution follow-up.
 - Treat Firefox as a separate compatibility project, because its extension APIs and review flow may require more deliberate testing.
 
-## Possible `v0.1.x` Tasks
+## Possible Next Tasks
 
-- Tune the new-conversation empty area once there is a stable inspected selector.
-- Improve composer/input surface harmony across light and dark browser modes.
+- Regression-test the new `Night Moss` preset in Chrome and Edge before store upload.
+- Recheck the new-conversation empty area after the next visible ChatGPT UI change.
+- Recheck composer/input surface harmony across light and dark browser modes.
 - Recheck disclaimer/footer styling after future ChatGPT UI updates.
 - Add a short manual regression checklist for Chrome and Edge before each store upload.

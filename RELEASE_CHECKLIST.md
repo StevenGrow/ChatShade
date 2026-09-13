@@ -1,6 +1,24 @@
-# ChatShade v0.1.0 Release Checklist
+# ChatShade Release Checklist
 
 This checklist separates Chrome Web Store requirements from the additional launch standards chosen for ChatShade.
+
+## Current Update: v0.2.0
+
+- [x] Increase `manifest.json` version to `0.2.0`.
+- [x] Keep the permission set unchanged: `storage` plus `https://chatgpt.com/*`.
+- [x] Add the Night Moss / 墨绿夜读 preset.
+- [x] Record composer and new-conversation compatibility tuning.
+- [x] Preserve ChatGPT's native adaptive contrast for signed-out authentication buttons.
+- [ ] Load the unpacked extension in Chrome and Edge.
+- [ ] Test all five presets, including Night Moss.
+- [ ] Test the signed-out ChatGPT header login and signup buttons in system light and dark modes.
+- [ ] Test custom color changes and Reset.
+- [ ] Test a new ChatGPT conversation and a long existing conversation.
+- [ ] Confirm typing, sending, scrolling, copying, and sidebar navigation still work.
+- [ ] Confirm the ChatGPT page console and Popup console contain no extension errors.
+- [ ] Build `ChatShade-v0.2.0.zip` from the project root.
+- [ ] Upload the same package to Chrome Web Store and Microsoft Edge Add-ons.
+- [ ] Monitor review email and early user feedback after publication.
 
 ## 1. Extension Code And Privacy
 
@@ -14,7 +32,7 @@ This checklist separates Chrome Web Store requirements from the additional launc
 - [x] Show an accessible error message when settings cannot be saved.
 - [x] Explain accurately that Chrome may sync settings through Chrome Sync.
 - [x] Decide whether the current icon is final and remove the placeholder note from `README.md` if accepted.
-- [x] Record the lighter composer input surface and new-conversation strip as known `v0.1.x` visual improvements.
+- [x] Record the composer input surface and new-conversation strip as `v0.2.0` compatibility tuning.
 
 ## 2. Final Chrome Testing
 
@@ -24,7 +42,7 @@ This is required before submission. Test in the current Chrome Stable release, n
 - [x] Confirm the extension installs without Manifest or runtime errors.
 - [x] Test a new chat and a long existing conversation.
 - [x] Test paragraphs, headings, lists, blockquotes, tables, inline code, and code blocks.
-- [x] Test all four presets.
+- [x] Test all current presets.
 - [x] Test all three custom color controls.
 - [x] Confirm color changes appear quickly while the picker is being used.
 - [x] Confirm the final color is saved after closing and reopening the Popup.
@@ -35,8 +53,8 @@ This is required before submission. Test in the current Chrome Stable release, n
 - [x] Test browser zoom at 100% and 125%.
 - [x] Confirm typing, sending, scrolling, copying, and sidebar navigation still work.
 - [x] Confirm the ChatGPT page console and Popup console contain no extension errors.
-- [x] Test all four themes while ChatGPT uses light mode.
-- [x] Test all four themes while ChatGPT uses dark mode.
+- [x] Test all current themes while ChatGPT uses light mode.
+- [x] Test all current themes while ChatGPT uses dark mode.
 - [ ] Test ChatGPT's system theme before and after the operating system appearance changes.
 
 ## 3. Public GitHub Repository
@@ -57,7 +75,7 @@ Repository: <https://github.com/StevenGrow/ChatShade>
 - [x] Confirm `PRIVACY.md` has a stable public URL.
 - [ ] Use the repository URL as the project website in the Chrome Web Store.
 - [ ] Use GitHub Issues as the initial support URL.
-- [ ] Create the `v0.1.0` tag from the exact source uploaded to the store.
+- [ ] Create the release tag from the exact source uploaded to the store.
 
 Suggested first-push commands after creating an empty GitHub repository:
 
@@ -73,8 +91,8 @@ git push -u origin main
 Create the release tag only after final Chrome testing and store package verification:
 
 ```bash
-git tag v0.1.0
-git push origin v0.1.0
+git tag v0.2.0
+git push origin v0.2.0
 ```
 
 ## 4. Chrome Web Store Developer Account
@@ -117,7 +135,7 @@ Required assets:
 Recommended screenshot set:
 
 - [ ] Main ChatGPT reading view with ChatShade enabled.
-- [ ] Popup showing the four preset themes.
+- [ ] Popup showing the five preset themes.
 - [ ] Custom color controls with the resulting page appearance.
 
 Optional asset:
@@ -163,20 +181,20 @@ Suggested ChatGPT site-access justification:
 
 - [ ] Keep `manifest.json` at the root of the ZIP archive.
 - [ ] Exclude private screenshots, development notes, `.DS_Store`, and store artwork that is not used by the extension.
-- [ ] Name the archive `ChatShade-v0.1.0.zip`.
+- [ ] Name the archive `ChatShade-v0.2.0.zip`.
 - [ ] Inspect the ZIP contents before upload.
-- [ ] Confirm the package contains the same source as the GitHub `v0.1.0` tag.
+- [ ] Confirm the package contains the same source as the GitHub `v0.2.0` tag.
 
 Suggested packaging command from the project root:
 
 ```bash
-zip -r ChatShade-v0.1.0.zip manifest.json _locales content popup icons README.md PRIVACY.md PRIVACY.zh-CN.md KNOWN_ISSUES.md LICENSE TRADEMARKS.md
+zip -r ChatShade-v0.2.0.zip manifest.json _locales content popup icons README.md CHANGELOG.md PRIVACY.md PRIVACY.zh-CN.md PRIVACY-EDGE.md KNOWN_ISSUES.md LICENSE TRADEMARKS.md
 ```
 
 ## 9. Submit For Review
 
 - [ ] Create a new item in the Developer Dashboard.
-- [ ] Upload `ChatShade-v0.1.0.zip`.
+- [ ] Upload `ChatShade-v0.2.0.zip`.
 - [ ] Complete the Store Listing tab.
 - [ ] Complete the Privacy practices tab.
 - [ ] Select public visibility and the intended regions in Distribution.
@@ -187,10 +205,10 @@ zip -r ChatShade-v0.1.0.zip manifest.json _locales content popup icons README.md
 ## 10. After Approval
 
 - [ ] Add the Chrome Web Store URL to `README.md`.
-- [ ] Publish the matching GitHub `v0.1.0` release.
+- [ ] Publish the matching GitHub `v0.2.0` release.
 - [ ] Test installation from the public store listing.
 - [ ] Monitor crashes, reviews, support issues, and uninstall feedback.
-- [ ] Track the composer input surface as a candidate for `v0.1.1`.
+- [ ] Monitor the composer input surface and new-conversation empty area after publication.
 - [ ] Increase the Manifest version before uploading any update.
 
 ## Official References

@@ -51,6 +51,10 @@
     "message": "Mist blue",
     "description": "Mist blue-gray theme name"
   },
+  "presetNightMoss": {
+    "message": "Night moss",
+    "description": "Dark green night-reading theme name"
+  },
   "customColorsTitle": {
     "message": "Custom colors",
     "description": "Custom colors section heading"

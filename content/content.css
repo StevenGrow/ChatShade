@@ -7,6 +7,7 @@
   --chatshade-sidebar-item-bg: color-mix(in srgb, var(--chatshade-page-bg) 75%, var(--chatshade-text-color) 25%);
   --chatshade-sidebar-hover-bg: color-mix(in srgb, var(--chatshade-page-bg) 70%, var(--chatshade-text-color) 30%);
   --chatshade-border-color: color-mix(in srgb, var(--chatshade-page-bg) 72%, var(--chatshade-text-color) 28%);
+  --chatshade-composer-bg: color-mix(in srgb, var(--chatshade-surface-bg) 94%, var(--chatshade-page-bg) 6%);
 }
 
 html[data-chatshade-enabled="true"] {
@@ -16,12 +17,15 @@ html[data-chatshade-enabled="true"] {
   --bg-primary: var(--chatshade-page-bg) !important;
   --bg-secondary: var(--chatshade-surface-bg) !important;
   --bg-tertiary: var(--chatshade-muted-bg) !important;
-  --composer-surface-primary: var(--chatshade-surface-bg) !important;
+  --composer-surface-primary: var(--chatshade-composer-bg) !important;
   --sidebar-surface-primary: var(--chatshade-sidebar-bg) !important;
   --sidebar-surface-secondary: var(--chatshade-sidebar-item-bg) !important;
   --sidebar-surface-tertiary: var(--chatshade-sidebar-hover-bg) !important;
   --surface-primary: var(--chatshade-surface-bg) !important;
   --surface-secondary: var(--chatshade-muted-bg) !important;
+}
+
+html[data-chatshade-enabled="true"] :is(main, [role="main"], nav, aside) {
   --text-primary: var(--chatshade-text-color) !important;
   --text-secondary: color-mix(in srgb, var(--chatshade-text-color) 78%, var(--chatshade-page-bg) 22%) !important;
   --text-tertiary: color-mix(in srgb, var(--chatshade-text-color) 58%, var(--chatshade-page-bg) 42%) !important;
@@ -128,12 +132,44 @@ html[data-chatshade-enabled="true"] [role="main"] :is(div, section):has(form)::a
 html[data-chatshade-enabled="true"] form,
 html[data-chatshade-enabled="true"] textarea,
 html[data-chatshade-enabled="true"] [contenteditable="true"],
-html[data-chatshade-enabled="true"] [role="textbox"],
-html[data-chatshade-enabled="true"] div[class*="composer"],
-html[data-chatshade-enabled="true"] div[class*="prompt"] {
-  background-color: var(--chatshade-surface-bg) !important;
+html[data-chatshade-enabled="true"] [role="textbox"] {
+  background-color: var(--chatshade-composer-bg) !important;
   color: var(--chatshade-text-color) !important;
   caret-color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] form.wm-composer-composer {
+  background-color: var(--chatshade-composer-bg) !important;
+  background-image: none !important;
+  border-color: color-mix(in srgb, var(--chatshade-text-color) 22%, var(--chatshade-surface-bg)) !important;
+  box-shadow:
+    0 1px 2px color-mix(in srgb, var(--chatshade-text-color) 7%, transparent),
+    0 6px 24px color-mix(in srgb, var(--chatshade-text-color) 5%, transparent) !important;
+}
+
+html[data-chatshade-enabled="true"] form.wm-composer-composer > .wm-composer-wrapOuter {
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+html[data-chatshade-enabled="true"] form.wm-composer-composer :is(.wm-composer-wrapInner, .wm-composer-primary) {
+  border-radius: inherit;
+}
+
+html[data-chatshade-enabled="true"] :is(div, section):has(> form.wm-composer-composer),
+html[data-chatshade-enabled="true"] :is(.wm-app-composerBehaviorRoot, .wm-app-composerPositioner, .wm-app-composerDock) {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+html[data-chatshade-enabled="true"] main :is(div, section, article, footer):is([class*="bg-token-main-surface-primary"], [class*="bg-token-main-surface-secondary"], [class*="bg-token-main-surface-tertiary"], [class*="bg-main-surface-primary"], [class*="bg-white"]),
+html[data-chatshade-enabled="true"] [role="main"] :is(div, section, article, footer):is([class*="bg-token-main-surface-primary"], [class*="bg-token-main-surface-secondary"], [class*="bg-token-main-surface-tertiary"], [class*="bg-main-surface-primary"], [class*="bg-white"]) {
+  background-color: var(--chatshade-page-bg) !important;
+  background-image: none !important;
+}
+
+html[data-chatshade-enabled="true"] form :is([contenteditable="true"], [role="textbox"], textarea) {
+  background-color: transparent !important;
 }
 
 html[data-chatshade-enabled="true"] textarea::placeholder,
@@ -150,6 +186,13 @@ html[data-chatshade-enabled="true"] aside {
 html[data-chatshade-enabled="true"] header,
 html[data-chatshade-enabled="true"] footer {
   background-color: var(--chatshade-muted-bg) !important;
+  color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] :is(aside, [data-octane-sidebar-pane]) header,
+html[data-chatshade-enabled="true"] header[class*="sidebar"] {
+  background-color: var(--chatshade-sidebar-bg) !important;
+  background-image: none !important;
   color: var(--chatshade-text-color) !important;
 }
 
@@ -252,11 +295,25 @@ html[data-chatshade-enabled="true"] [role="main"] footer * {
   color: inherit !important;
 }
 
-html[data-chatshade-enabled="true"] button,
-html[data-chatshade-enabled="true"] a,
-html[data-chatshade-enabled="true"] [role="button"],
-html[data-chatshade-enabled="true"] [role="menuitem"] {
+html[data-chatshade-enabled="true"] main :is(button, a, [role="button"], [role="menuitem"]),
+html[data-chatshade-enabled="true"] [role="main"] :is(button, a, [role="button"], [role="menuitem"]) {
   color: var(--chatshade-text-color);
+}
+
+html[data-chatshade-enabled="true"] [data-mobile-auth-entry-point="mobile_chat_stage_header"][data-mobile-auth-entry-action="login"] {
+  background: var(--chatshade-text-color) !important;
+  border-color: var(--chatshade-text-color) !important;
+  color: var(--chatshade-page-bg) !important;
+}
+
+html[data-chatshade-enabled="true"] [data-mobile-auth-entry-point="mobile_chat_stage_header"][data-mobile-auth-entry-action="signup"] {
+  background: var(--chatshade-surface-bg) !important;
+  border-color: var(--chatshade-border-color) !important;
+  color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] [data-mobile-auth-entry-point="mobile_chat_stage_header"][data-mobile-auth-entry-action] * {
+  color: inherit !important;
 }
 
 html[data-chatshade-enabled="true"] pre,

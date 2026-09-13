@@ -15,18 +15,19 @@ ChatShade is an independent third-party browser extension and is not affiliated 
 - [Install from the Chrome Web Store](https://chromewebstore.google.com/detail/chatshade/gnbjdekebgnifnnohilgefdikifdgbh)
 - [Install from Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/npknldohcppjbmiealoaelfahhpaokjb)
 
-The first public release is `v0.1.0`.
+The first public release was `v0.1.0`. The current source version is `v0.2.0`.
 
-## MVP Features
+## Features
 
 - Runs only on `https://chatgpt.com/*`.
 - One switch to enable or disable ChatShade.
 - English and Simplified Chinese UI that follows the browser interface language.
-- Four built-in presets:
+- Five built-in presets:
   - Soft Ivory / 柔和米白
   - Warm Gray / 暖灰
   - Restful Green / 护眼绿
   - Mist Blue / 雾蓝灰
+  - Night Moss / 墨绿夜读
 - Custom color pickers for:
   - Page background
   - Conversation/content surface
@@ -61,6 +62,7 @@ ChatShade/
 ├── LICENSE
 ├── TRADEMARKS.md
 ├── KNOWN_ISSUES.md
+├── CHANGELOG.md
 ├── RELEASE_CHECKLIST.md
 ├── README.md
 ├── PRIVACY-EDGE.md
@@ -82,6 +84,7 @@ This MVP therefore uses a conservative styling model:
 - `content/content.css` applies colors from those variables to broad, relatively stable page areas such as `html`, `body`, `main`, `nav`, `aside`, `header`, textboxes, and semantic message attributes.
 - The popup writes settings only to extension storage. It does not inspect the active tab or request the `tabs` permission.
 - The content script listens to `chrome.storage.onChanged`, so open ChatGPT pages update without a manual refresh in most cases.
+- `v0.2.0` keeps the same permissions while adding a dark reading preset and more targeted compatibility rules for ChatGPT's composer and empty conversation areas.
 
 Selectors that may need real-page tuning later are intentionally kept in `content/content.css`, especially those involving `data-testid`, `data-message-author-role`, and class fragments such as `composer`, `prompt`, `thread`, or `conversation`.
 
@@ -155,7 +158,7 @@ Tracked compatibility notes and next-version ideas live in [KNOWN_ISSUES.md](KNO
 Current priorities:
 
 - Keep Chrome and Edge compatibility stable as ChatGPT changes its page structure.
-- Fix the remaining new-conversation/composer surface visual issues without broad fragile selectors.
+- Monitor the `v0.2.0` composer and new-conversation surface tuning against future ChatGPT UI updates.
 - Consider Opera distribution after Chrome and Edge have a little more usage feedback.
 - Consider Firefox as a later dedicated compatibility project.
 - Keep the permission set minimal: `storage` plus `https://chatgpt.com/*`.

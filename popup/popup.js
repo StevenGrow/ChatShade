@@ -43,6 +43,16 @@ const PRESETS = [
       surfaceBackground: "#f1f5f5",
       textColor: "#243139"
     }
+  },
+  {
+    id: "night-moss",
+    nameMessage: "presetNightMoss",
+    fallbackName: "Night moss",
+    colors: {
+      pageBackground: "#171d19",
+      surfaceBackground: "#202820",
+      textColor: "#dbe6d8"
+    }
   }
 ];
 

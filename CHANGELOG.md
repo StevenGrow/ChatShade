@@ -7,6 +7,8 @@
 - Tuned ChatGPT composer styling so the editable field blends better with the ChatShade surface.
 - Replaced ChatGPT's black composer frame with a theme-aware border and shadow.
 - Narrowed composer selectors so square positioning and dock containers stay transparent while the rounded input surface keeps its theme color.
+- Kept logged-in composer editing and layout layers transparent so they do not draw square inner blocks.
+- Restored contrast on the actual rounded composer surface and clipped its contents cleanly to that shape.
 - Tuned ChatGPT main-surface token handling to reduce light strips in new or short conversations.
 - Preserved ChatGPT's native light/dark contrast for signed-out authentication buttons.
 - Kept the permission set unchanged: `storage` plus `https://chatgpt.com/*`.

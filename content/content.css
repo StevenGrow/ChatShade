@@ -111,9 +111,7 @@ html[data-chatshade-enabled="true"] [data-message-author-role] a {
 }
 
 html[data-chatshade-enabled="true"] main :is(div, section):has(form),
-html[data-chatshade-enabled="true"] [role="main"] :is(div, section):has(form),
-html[data-chatshade-enabled="true"] main :is(div, section):has([role="textbox"]),
-html[data-chatshade-enabled="true"] [role="main"] :is(div, section):has([role="textbox"]) {
+html[data-chatshade-enabled="true"] [role="main"] :is(div, section):has(form) {
   --main-surface-primary: var(--chatshade-page-bg) !important;
   --surface-primary: var(--chatshade-page-bg) !important;
   --bg-primary: var(--chatshade-page-bg) !important;
@@ -129,30 +127,48 @@ html[data-chatshade-enabled="true"] [role="main"] :is(div, section):has(form)::a
   background-image: none !important;
 }
 
-html[data-chatshade-enabled="true"] form,
-html[data-chatshade-enabled="true"] textarea,
-html[data-chatshade-enabled="true"] [contenteditable="true"],
-html[data-chatshade-enabled="true"] [role="textbox"] {
-  background-color: var(--chatshade-composer-bg) !important;
+html[data-chatshade-enabled="true"] form {
   color: var(--chatshade-text-color) !important;
   caret-color: var(--chatshade-text-color) !important;
 }
 
-html[data-chatshade-enabled="true"] form.wm-composer-composer {
+html[data-chatshade-enabled="true"] :is(textarea, [contenteditable="true"], [role="textbox"]) {
+  background-color: transparent !important;
+  background-image: none !important;
+  color: var(--chatshade-text-color) !important;
+  caret-color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] main form:has(:is(textarea, [contenteditable="true"], [role="textbox"])),
+html[data-chatshade-enabled="true"] [role="main"] form:has(:is(textarea, [contenteditable="true"], [role="textbox"])) {
+  --main-surface-primary: var(--chatshade-composer-bg) !important;
+  --surface-primary: var(--chatshade-composer-bg) !important;
+  --bg-primary: var(--chatshade-composer-bg) !important;
   background-color: var(--chatshade-composer-bg) !important;
   background-image: none !important;
+  border-radius: 32px !important;
   border-color: color-mix(in srgb, var(--chatshade-text-color) 22%, var(--chatshade-surface-bg)) !important;
   box-shadow:
     0 1px 2px color-mix(in srgb, var(--chatshade-text-color) 7%, transparent),
     0 6px 24px color-mix(in srgb, var(--chatshade-text-color) 5%, transparent) !important;
+  overflow: clip !important;
+}
+
+html[data-chatshade-enabled="true"] main form:has(:is(textarea, [contenteditable="true"], [role="textbox"])) > :is(div, section),
+html[data-chatshade-enabled="true"] [role="main"] form:has(:is(textarea, [contenteditable="true"], [role="textbox"])) > :is(div, section) {
+  background-color: transparent !important;
+  background-image: none !important;
+  border-radius: inherit;
 }
 
 html[data-chatshade-enabled="true"] form.wm-composer-composer > .wm-composer-wrapOuter {
   border-radius: inherit;
-  overflow: hidden;
+  overflow: clip;
 }
 
 html[data-chatshade-enabled="true"] form.wm-composer-composer :is(.wm-composer-wrapInner, .wm-composer-primary) {
+  background-color: transparent !important;
+  background-image: none !important;
   border-radius: inherit;
 }
 
@@ -162,14 +178,10 @@ html[data-chatshade-enabled="true"] :is(.wm-app-composerBehaviorRoot, .wm-app-co
   background-image: none !important;
 }
 
-html[data-chatshade-enabled="true"] main :is(div, section, article, footer):is([class*="bg-token-main-surface-primary"], [class*="bg-token-main-surface-secondary"], [class*="bg-token-main-surface-tertiary"], [class*="bg-main-surface-primary"], [class*="bg-white"]),
-html[data-chatshade-enabled="true"] [role="main"] :is(div, section, article, footer):is([class*="bg-token-main-surface-primary"], [class*="bg-token-main-surface-secondary"], [class*="bg-token-main-surface-tertiary"], [class*="bg-main-surface-primary"], [class*="bg-white"]) {
+html[data-chatshade-enabled="true"] main :is(div, section, article, footer):is([class*="bg-token-main-surface-primary"], [class*="bg-token-main-surface-secondary"], [class*="bg-token-main-surface-tertiary"], [class*="bg-main-surface-primary"], [class*="bg-white"]):not([class*="composer"]):not([class*="prompt"]),
+html[data-chatshade-enabled="true"] [role="main"] :is(div, section, article, footer):is([class*="bg-token-main-surface-primary"], [class*="bg-token-main-surface-secondary"], [class*="bg-token-main-surface-tertiary"], [class*="bg-main-surface-primary"], [class*="bg-white"]):not([class*="composer"]):not([class*="prompt"]) {
   background-color: var(--chatshade-page-bg) !important;
   background-image: none !important;
-}
-
-html[data-chatshade-enabled="true"] form :is([contenteditable="true"], [role="textbox"], textarea) {
-  background-color: transparent !important;
 }
 
 html[data-chatshade-enabled="true"] textarea::placeholder,

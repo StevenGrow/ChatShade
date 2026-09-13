@@ -51,6 +51,10 @@
     "message": "Mist blue",
     "description": "Mist blue-gray theme name"
   },
+  "presetBlushPink": {
+    "message": "Blush pink",
+    "description": "Soft blush pink theme name"
+  },
   "presetNightMoss": {
     "message": "Night moss",
     "description": "Dark green night-reading theme name"

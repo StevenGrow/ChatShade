@@ -51,6 +51,10 @@
     "message": "雾蓝灰",
     "description": "雾蓝灰主题名称"
   },
+  "presetBlushPink": {
+    "message": "柔粉",
+    "description": "柔和淡粉主题名称"
+  },
   "presetNightMoss": {
     "message": "墨绿夜读",
     "description": "深色夜间阅读主题名称"

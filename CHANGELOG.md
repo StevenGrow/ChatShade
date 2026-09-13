@@ -2,6 +2,7 @@
 
 ## v0.2.0
 
+- Added the Blush Pink / 柔粉 preset for a lighter warm-pink reading tone.
 - Added the Night Moss / 墨绿夜读 preset for darker late-night reading.
 - Tuned ChatGPT composer styling so the editable field blends better with the ChatShade surface.
 - Replaced ChatGPT's black composer frame with a theme-aware border and shadow.

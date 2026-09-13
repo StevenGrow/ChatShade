@@ -22,11 +22,12 @@ The first public release was `v0.1.0`. The current source version is `v0.2.0`.
 - Runs only on `https://chatgpt.com/*`.
 - One switch to enable or disable ChatShade.
 - English and Simplified Chinese UI that follows the browser interface language.
-- Five built-in presets:
+- Six built-in presets:
   - Soft Ivory / 柔和米白
   - Warm Gray / 暖灰
   - Restful Green / 护眼绿
   - Mist Blue / 雾蓝灰
+  - Blush Pink / 柔粉
   - Night Moss / 墨绿夜读
 - Custom color pickers for:
   - Page background

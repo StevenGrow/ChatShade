@@ -45,6 +45,16 @@ const PRESETS = [
     }
   },
   {
+    id: "blush-pink",
+    nameMessage: "presetBlushPink",
+    fallbackName: "Blush pink",
+    colors: {
+      pageBackground: "#f6edf1",
+      surfaceBackground: "#fbf5f7",
+      textColor: "#35282d"
+    }
+  },
+  {
     id: "night-moss",
     nameMessage: "presetNightMoss",
     fallbackName: "Night moss",

@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.2.2
+
+- Adapted ChatGPT page, sidebar, header, and composer theme rules for the latest site structure.
+- Reduced native light/dark surface bleed-through by covering newer ChatGPT background, text, border, popover, and composer tokens.
+
+## v0.2.1
+
+- Fixed themed Markdown code blocks so their native surface, language header, copy area, and rounded corners remain visually unified across all presets.
+- Kept nested Markdown code layers transparent so they do not create rectangular background artifacts around the native rounded container.
+
 ## v0.2.0
 
 - Added the Blush Pink / 柔粉 preset for a lighter warm-pink reading tone.

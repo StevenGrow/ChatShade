@@ -2,21 +2,19 @@
 
 This checklist separates Chrome Web Store requirements from the additional launch standards chosen for ChatShade.
 
-## Current Update: v0.2.0
+## Current Update: v0.2.2
 
-- [x] Increase `manifest.json` version to `0.2.0`.
+- [x] Increase `manifest.json` version to `0.2.2`.
 - [x] Keep the permission set unchanged: `storage` plus `https://chatgpt.com/*`.
-- [x] Add the Night Moss / 墨绿夜读 preset.
-- [x] Record composer and new-conversation compatibility tuning.
-- [x] Preserve ChatGPT's native adaptive contrast for signed-out authentication buttons.
+- [x] Adapt ChatGPT page, sidebar, header, popover, and composer styling to the latest site structure.
 - [ ] Load the unpacked extension in Chrome and Edge.
-- [ ] Test all five presets, including Night Moss.
+- [ ] Test all six presets, including Night Moss.
 - [ ] Test the signed-out ChatGPT header login and signup buttons in system light and dark modes.
 - [ ] Test custom color changes and Reset.
 - [ ] Test a new ChatGPT conversation and a long existing conversation.
 - [ ] Confirm typing, sending, scrolling, copying, and sidebar navigation still work.
 - [ ] Confirm the ChatGPT page console and Popup console contain no extension errors.
-- [ ] Build `ChatShade-v0.2.0.zip` from the project root.
+- [ ] Build `ChatShade-v0.2.2.zip` from the project root.
 - [ ] Upload the same package to Chrome Web Store and Microsoft Edge Add-ons.
 - [ ] Monitor review email and early user feedback after publication.
 
@@ -91,8 +89,8 @@ git push -u origin main
 Create the release tag only after final Chrome testing and store package verification:
 
 ```bash
-git tag v0.2.0
-git push origin v0.2.0
+git tag v0.2.2
+git push origin v0.2.2
 ```
 
 ## 4. Chrome Web Store Developer Account
@@ -135,7 +133,7 @@ Required assets:
 Recommended screenshot set:
 
 - [ ] Main ChatGPT reading view with ChatShade enabled.
-- [ ] Popup showing the five preset themes.
+- [ ] Popup showing the six preset themes.
 - [ ] Custom color controls with the resulting page appearance.
 
 Optional asset:
@@ -179,22 +177,22 @@ Suggested ChatGPT site-access justification:
 
 ## 8. Build The Upload Package
 
-- [ ] Keep `manifest.json` at the root of the ZIP archive.
+- [x] Keep `manifest.json` at the root of the ZIP archive.
 - [ ] Exclude private screenshots, development notes, `.DS_Store`, and store artwork that is not used by the extension.
-- [ ] Name the archive `ChatShade-v0.2.0.zip`.
+- [ ] Name the archive `ChatShade-v0.2.2.zip`.
 - [ ] Inspect the ZIP contents before upload.
-- [ ] Confirm the package contains the same source as the GitHub `v0.2.0` tag.
+- [ ] Confirm the package contains the same source as the GitHub `v0.2.2` tag.
 
 Suggested packaging command from the project root:
 
 ```bash
-zip -r ChatShade-v0.2.0.zip manifest.json _locales content popup icons README.md CHANGELOG.md PRIVACY.md PRIVACY.zh-CN.md PRIVACY-EDGE.md KNOWN_ISSUES.md LICENSE TRADEMARKS.md
+zip -r ChatShade-v0.2.2.zip manifest.json _locales content popup icons README.md CHANGELOG.md PRIVACY.md PRIVACY.zh-CN.md PRIVACY-EDGE.md KNOWN_ISSUES.md LICENSE TRADEMARKS.md
 ```
 
 ## 9. Submit For Review
 
 - [ ] Create a new item in the Developer Dashboard.
-- [ ] Upload `ChatShade-v0.2.0.zip`.
+- [ ] Upload `ChatShade-v0.2.2.zip`.
 - [ ] Complete the Store Listing tab.
 - [ ] Complete the Privacy practices tab.
 - [ ] Select public visibility and the intended regions in Distribution.
@@ -205,7 +203,7 @@ zip -r ChatShade-v0.2.0.zip manifest.json _locales content popup icons README.md
 ## 10. After Approval
 
 - [ ] Add the Chrome Web Store URL to `README.md`.
-- [ ] Publish the matching GitHub `v0.2.0` release.
+- [ ] Publish the matching GitHub `v0.2.2` release.
 - [ ] Test installation from the public store listing.
 - [ ] Monitor crashes, reviews, support issues, and uninstall feedback.
 - [ ] Monitor the composer input surface and new-conversation empty area after publication.

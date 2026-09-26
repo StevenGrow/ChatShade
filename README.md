@@ -15,7 +15,7 @@ ChatShade is an independent third-party browser extension and is not affiliated 
 - [Install from the Chrome Web Store](https://chromewebstore.google.com/detail/chatshade/gnbjdekebgnifnnohilgefdikifdgbh)
 - [Install from Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/npknldohcppjbmiealoaelfahhpaokjb)
 
-The first public release was `v0.1.0`. The current source version is `v0.2.0`.
+The first public release was `v0.1.0`. The current source version is `v0.2.2`.
 
 ## Features
 

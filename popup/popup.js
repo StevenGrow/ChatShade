@@ -216,14 +216,14 @@ function renderPresetCards() {
       imageSwatch.className = "swatch swatch-image";
       imageSwatch.style.backgroundImage = `url("${chrome.runtime.getURL("assets/night-sky.jpg")}")`;
       swatches.append(imageSwatch);
+    } else {
+      Object.values(preset.colors).forEach((color) => {
+        const swatch = document.createElement("span");
+        swatch.className = "swatch";
+        swatch.style.backgroundColor = color;
+        swatches.append(swatch);
+      });
     }
-
-    Object.values(preset.colors).forEach((color) => {
-      const swatch = document.createElement("span");
-      swatch.className = "swatch";
-      swatch.style.backgroundColor = color;
-      swatches.append(swatch);
-    });
 
     button.append(name, swatches);
     button.addEventListener("click", () => selectPreset(preset));

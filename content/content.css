@@ -117,11 +117,15 @@ html[data-chatshade-enabled="true"] [data-message-author-role="assistant"] [clas
 
 html[data-chatshade-enabled="true"] main article [class*="markdown"],
 html[data-chatshade-enabled="true"] [data-message-author-role] [class*="markdown"],
-html[data-chatshade-enabled="true"] [data-testid*="conversation-turn"] [class*="markdown"] {
+html[data-chatshade-enabled="true"] [data-testid*="conversation-turn"] [class*="markdown"],
+html[data-chatshade-enabled="true"] [data-markdown-text-style="assistant-message"] {
   color: var(--chatshade-text-color) !important;
 }
 
-html[data-chatshade-enabled="true"] [data-message-author-role] :is(
+html[data-chatshade-enabled="true"] :is(
+  [data-message-author-role],
+  [data-markdown-text-style="assistant-message"]
+) :is(
   p,
   li,
   h1,
@@ -144,6 +148,10 @@ html[data-chatshade-enabled="true"] [data-message-author-role] :is(
   td
 ) {
   color: var(--chatshade-text-color) !important;
+}
+
+html[data-chatshade-enabled="true"] [data-content-search-turn-key] [class*="text-text/"] {
+  color: color-mix(in srgb, var(--chatshade-text-color) 60%, transparent) !important;
 }
 
 html[data-chatshade-enabled="true"] [data-message-author-role] a {

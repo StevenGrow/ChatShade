@@ -185,8 +185,7 @@ html[data-chatshade-enabled="true"] :is(textarea, [contenteditable="true"], [rol
   caret-color: var(--chatshade-text-color) !important;
 }
 
-html[data-chatshade-enabled="true"] main :is(form, div, section):not([data-rich-text-layout]):is([data-testid*="composer"], [class*="composer"]):has(:is(#prompt-textarea, textarea, [contenteditable="true"], [role="textbox"])),
-html[data-chatshade-enabled="true"] [role="main"] :is(form, div, section):not([data-rich-text-layout]):is([data-testid*="composer"], [class*="composer"]):has(:is(#prompt-textarea, textarea, [contenteditable="true"], [role="textbox"])),
+/* Ancestor utility classes mention composer too; only the form is an input surface. */
 html[data-chatshade-enabled="true"] main form:has(:is(#prompt-textarea, textarea, [contenteditable="true"], [role="textbox"])),
 html[data-chatshade-enabled="true"] [role="main"] form:has(:is(#prompt-textarea, textarea, [contenteditable="true"], [role="textbox"])) {
   --main-surface-primary: var(--chatshade-composer-bg) !important;
@@ -205,11 +204,11 @@ html[data-chatshade-enabled="true"] [role="main"] form:has(:is(#prompt-textarea,
   overflow: clip !important;
 }
 
+/* Preserve inner radii: rounded overflow clips the native caret and first glyphs. */
 html[data-chatshade-enabled="true"] main :is(form, div, section):has(:is(#prompt-textarea, textarea, [contenteditable="true"], [role="textbox"])) > :is(div, section),
 html[data-chatshade-enabled="true"] [role="main"] :is(form, div, section):has(:is(#prompt-textarea, textarea, [contenteditable="true"], [role="textbox"])) > :is(div, section) {
   background-color: transparent !important;
   background-image: none !important;
-  border-radius: inherit;
 }
 
 /* The new composer adds a second surface around only the rich-text editor. */

@@ -26,6 +26,17 @@
       <section class="section" aria-labelledby="presetTitle">
         <h2 id="presetTitle" data-i18n="presetSectionTitle">Preset themes</h2>
         <div class="preset-grid" id="presetGrid" role="radiogroup" aria-label="Preset themes" data-i18n-aria-label="presetGroupAriaLabel"></div>
+        <div class="range-field" id="starIntensityField" hidden>
+          <div class="range-heading">
+            <label for="starIntensity" data-i18n="starIntensityLabel">Star intensity</label>
+            <output id="starIntensityValue" for="starIntensity">70%</output>
+          </div>
+          <input id="starIntensity" type="range" min="0" max="100" step="5" value="70" aria-label="Star intensity" data-i18n-aria-label="starIntensityAriaLabel">
+          <div class="range-scale" aria-hidden="true">
+            <span data-i18n="starIntensityWeak">Subtle</span>
+            <span data-i18n="starIntensityStrong">Vivid</span>
+          </div>
+        </div>
       </section>
 
       <section class="section" aria-labelledby="customTitle">

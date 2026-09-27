@@ -2,9 +2,12 @@
   "use strict";
 
   const STORAGE_KEY = "chatshadeSettings";
+  const DEFAULT_STAR_INTENSITY = 70;
+  const STAR_BACKGROUND_URL = chrome.runtime.getURL("assets/night-sky.jpg");
   const DEFAULT_SETTINGS = {
     enabled: true,
     presetId: "soft-ivory",
+    starIntensity: DEFAULT_STAR_INTENSITY,
     colors: {
       pageBackground: "#f7f1e8",
       surfaceBackground: "#fbf5eb",
@@ -24,6 +27,11 @@
 
   function sanitizeColor(value, fallback) {
     return /^#[0-9a-f]{6}$/i.test(value || "") ? value : fallback;
+  }
+
+  function sanitizePercentage(value, fallback) {
+    const number = Number(value);
+    return Number.isFinite(number) ? Math.min(100, Math.max(0, Math.round(number))) : fallback;
   }
 
   function isDarkColor(hexColor) {
@@ -46,6 +54,7 @@
       return {
         enabled: typeof source.enabled === "boolean" ? source.enabled : DEFAULT_SETTINGS.enabled,
         presetId: migration.presetId,
+        starIntensity: sanitizePercentage(source.starIntensity, DEFAULT_STAR_INTENSITY),
         colors: { ...migration.colors }
       };
     }
@@ -53,6 +62,7 @@
     return {
       enabled: typeof source.enabled === "boolean" ? source.enabled : DEFAULT_SETTINGS.enabled,
       presetId,
+      starIntensity: sanitizePercentage(source.starIntensity, DEFAULT_STAR_INTENSITY),
       colors: {
         pageBackground: sanitizeColor(colors.pageBackground, DEFAULT_SETTINGS.colors.pageBackground),
         surfaceBackground: sanitizeColor(colors.surfaceBackground, DEFAULT_SETTINGS.colors.surfaceBackground),
@@ -68,17 +78,25 @@
     if (!settings.enabled) {
       root.removeAttribute("data-chatshade-enabled");
       root.removeAttribute("data-chatshade-scheme");
+      root.removeAttribute("data-chatshade-preset");
       root.style.removeProperty("--chatshade-page-bg");
       root.style.removeProperty("--chatshade-surface-bg");
       root.style.removeProperty("--chatshade-text-color");
+      root.style.removeProperty("--chatshade-star-intensity");
+      root.style.removeProperty("--chatshade-star-veil");
+      root.style.removeProperty("--chatshade-star-image");
       return;
     }
 
     root.setAttribute("data-chatshade-enabled", "true");
     root.setAttribute("data-chatshade-scheme", isDarkColor(settings.colors.pageBackground) ? "dark" : "light");
+    root.setAttribute("data-chatshade-preset", settings.presetId);
     root.style.setProperty("--chatshade-page-bg", settings.colors.pageBackground);
     root.style.setProperty("--chatshade-surface-bg", settings.colors.surfaceBackground);
     root.style.setProperty("--chatshade-text-color", settings.colors.textColor);
+    root.style.setProperty("--chatshade-star-intensity", `${settings.starIntensity}%`);
+    root.style.setProperty("--chatshade-star-veil", `${100 - settings.starIntensity}%`);
+    root.style.setProperty("--chatshade-star-image", `url("${STAR_BACKGROUND_URL}")`);
   }
 
   chrome.storage.sync.get({ [STORAGE_KEY]: DEFAULT_SETTINGS }, (result) => {

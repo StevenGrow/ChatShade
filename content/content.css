@@ -2,6 +2,8 @@
   --chatshade-page-bg: #f7f1e8;
   --chatshade-surface-bg: #fffaf0;
   --chatshade-text-color: #2f2a24;
+  --chatshade-star-intensity: 70%;
+  --chatshade-star-veil: 30%;
   --chatshade-muted-bg: color-mix(in srgb, var(--chatshade-page-bg) 86%, var(--chatshade-text-color) 14%);
   --chatshade-sidebar-bg: color-mix(in srgb, var(--chatshade-page-bg) 82%, var(--chatshade-text-color) 18%);
   --chatshade-sidebar-item-bg: color-mix(in srgb, var(--chatshade-page-bg) 75%, var(--chatshade-text-color) 25%);
@@ -499,4 +501,55 @@ html[data-chatshade-enabled="true"] [class*="markdown"] code:not(pre code) {
 html[data-chatshade-enabled="true"] ::selection {
   background: color-mix(in srgb, var(--chatshade-text-color) 24%, transparent);
   color: var(--chatshade-text-color);
+}
+
+html[data-chatshade-enabled="true"][data-chatshade-preset="starry-night"] {
+  background: var(--chatshade-page-bg) !important;
+}
+
+html[data-chatshade-enabled="true"][data-chatshade-preset="starry-night"] :is(
+  #__next,
+  #root,
+  body > div,
+  #__next > div,
+  #root > div,
+  main,
+  [role="main"],
+  [data-testid="chatgpt-app"],
+  [data-testid="chat-page"],
+  [data-testid="conversation-panel"],
+  [data-testid="conversation-turns"],
+  div[class*="thread"],
+  div[class*="conversation"]
+) {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+html[data-chatshade-enabled="true"][data-chatshade-preset="starry-night"] body {
+  background-color: var(--chatshade-page-bg) !important;
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--chatshade-page-bg) var(--chatshade-star-veil), transparent),
+      color-mix(in srgb, var(--chatshade-page-bg) var(--chatshade-star-veil), transparent)
+    ),
+    var(--chatshade-star-image) !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+html[data-chatshade-enabled="true"][data-chatshade-preset="starry-night"] main :is(div, section):has(:is(form, #prompt-textarea, textarea, [contenteditable="true"], [role="textbox"])),
+html[data-chatshade-enabled="true"][data-chatshade-preset="starry-night"] [role="main"] :is(div, section):has(:is(form, #prompt-textarea, textarea, [contenteditable="true"], [role="textbox"])),
+html[data-chatshade-enabled="true"][data-chatshade-preset="starry-night"] main :is(div, section):has(:is(form, #prompt-textarea, textarea, [contenteditable="true"], [role="textbox"]))::before,
+html[data-chatshade-enabled="true"][data-chatshade-preset="starry-night"] main :is(div, section):has(:is(form, #prompt-textarea, textarea, [contenteditable="true"], [role="textbox"]))::after,
+html[data-chatshade-enabled="true"][data-chatshade-preset="starry-night"] [role="main"] :is(div, section):has(:is(form, #prompt-textarea, textarea, [contenteditable="true"], [role="textbox"]))::before,
+html[data-chatshade-enabled="true"][data-chatshade-preset="starry-night"] [role="main"] :is(div, section):has(:is(form, #prompt-textarea, textarea, [contenteditable="true"], [role="textbox"]))::after {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+html[data-chatshade-enabled="true"][data-chatshade-preset="starry-night"] .thread-scroll-container {
+  background-color: color-mix(in srgb, var(--chatshade-page-bg) 24%, transparent) !important;
 }

@@ -59,6 +59,26 @@
     "message": "Night moss",
     "description": "Dark green night-reading theme name"
   },
+  "presetStarryNight": {
+    "message": "Starry night",
+    "description": "Dark reading theme with a starry background"
+  },
+  "starIntensityLabel": {
+    "message": "Star intensity",
+    "description": "Label for the starry background intensity slider"
+  },
+  "starIntensityAriaLabel": {
+    "message": "Adjust starry background intensity",
+    "description": "Accessible label for the starry background intensity slider"
+  },
+  "starIntensityWeak": {
+    "message": "Subtle",
+    "description": "Low end label for star intensity"
+  },
+  "starIntensityStrong": {
+    "message": "Vivid",
+    "description": "High end label for star intensity"
+  },
   "customColorsTitle": {
     "message": "Custom colors",
     "description": "Custom colors section heading"

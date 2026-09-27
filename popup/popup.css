@@ -123,7 +123,8 @@ h1 {
 .switch input:focus-visible + .switch-track,
 button:focus-visible,
 .preset-card:focus-visible,
-input[type="color"]:focus-visible {
+input[type="color"]:focus-visible,
+input[type="range"]:focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
@@ -165,6 +166,11 @@ h2 {
   border-color: var(--accent);
 }
 
+.preset-card[data-preset-id="starry-night"] {
+  grid-column: 1 / -1;
+  min-height: 68px;
+}
+
 .preset-name {
   display: block;
   margin-bottom: 8px;
@@ -182,6 +188,56 @@ h2 {
   height: 22px;
   border: 1px solid rgb(0 0 0 / 18%);
   border-radius: 50%;
+}
+
+.swatch-image {
+  width: 70px;
+  border-radius: 6px;
+  background-position: center;
+  background-size: cover;
+}
+
+.range-field {
+  margin-top: 10px;
+  padding: 11px 12px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel-bg);
+}
+
+.range-field[hidden] {
+  display: none;
+}
+
+.range-heading,
+.range-scale {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.range-heading label {
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.range-heading output {
+  color: var(--accent-strong);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 24px;
+  margin: 7px 0 2px;
+  accent-color: var(--accent-strong);
+  cursor: pointer;
+}
+
+.range-scale {
+  color: var(--muted);
+  font-size: 11px;
 }
 
 .field-list {

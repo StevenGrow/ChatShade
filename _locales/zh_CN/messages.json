@@ -59,6 +59,26 @@
     "message": "墨绿夜读",
     "description": "深色夜间阅读主题名称"
   },
+  "presetStarryNight": {
+    "message": "星空夜读",
+    "description": "带星空背景的深色阅读主题名称"
+  },
+  "starIntensityLabel": {
+    "message": "星空强度",
+    "description": "星空主题背景强度滑杆标签"
+  },
+  "starIntensityAriaLabel": {
+    "message": "调整星空背景强度",
+    "description": "星空主题背景强度滑杆的无障碍标签"
+  },
+  "starIntensityWeak": {
+    "message": "弱",
+    "description": "星空强度滑杆的低强度标签"
+  },
+  "starIntensityStrong": {
+    "message": "强",
+    "description": "星空强度滑杆的高强度标签"
+  },
   "customColorsTitle": {
     "message": "自定义颜色",
     "description": "自定义颜色区域标题"

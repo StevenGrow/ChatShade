@@ -2,6 +2,8 @@
 
 const STORAGE_KEY = "chatshadeSettings";
 const SAVE_DELAY_MS = 500;
+const DEFAULT_STAR_INTENSITY = 70;
+const STARRY_PRESET_ID = "starry-night";
 
 const PRESETS = [
   {
@@ -63,6 +65,17 @@ const PRESETS = [
       surfaceBackground: "#202820",
       textColor: "#dbe6d8"
     }
+  },
+  {
+    id: STARRY_PRESET_ID,
+    nameMessage: "presetStarryNight",
+    fallbackName: "Starry night",
+    hasBackgroundImage: true,
+    colors: {
+      pageBackground: "#101713",
+      surfaceBackground: "#18231c",
+      textColor: "#dbe6d8"
+    }
   }
 ];
 
@@ -73,6 +86,7 @@ const LEGACY_PRESET_MIGRATIONS = {
 const DEFAULT_SETTINGS = {
   enabled: true,
   presetId: PRESETS[0].id,
+  starIntensity: DEFAULT_STAR_INTENSITY,
   colors: { ...PRESETS[0].colors }
 };
 
@@ -82,6 +96,9 @@ const elements = {
   pageBackground: document.querySelector("#pageBackground"),
   surfaceBackground: document.querySelector("#surfaceBackground"),
   textColor: document.querySelector("#textColor"),
+  starIntensityField: document.querySelector("#starIntensityField"),
+  starIntensity: document.querySelector("#starIntensity"),
+  starIntensityValue: document.querySelector("#starIntensityValue"),
   resetButton: document.querySelector("#resetButton"),
   saveStatus: document.querySelector("#saveStatus")
 };
@@ -112,12 +129,18 @@ function cloneSettings(settings) {
   return {
     enabled: settings.enabled,
     presetId: settings.presetId,
+    starIntensity: settings.starIntensity,
     colors: { ...settings.colors }
   };
 }
 
 function sanitizeColor(value, fallback) {
   return /^#[0-9a-f]{6}$/i.test(value || "") ? value : fallback;
+}
+
+function sanitizePercentage(value, fallback) {
+  const number = Number(value);
+  return Number.isFinite(number) ? Math.min(100, Math.max(0, Math.round(number))) : fallback;
 }
 
 function normalizeSettings(settings) {
@@ -132,6 +155,7 @@ function normalizeSettings(settings) {
     return {
       enabled: typeof source.enabled === "boolean" ? source.enabled : DEFAULT_SETTINGS.enabled,
       presetId: preset.id,
+      starIntensity: sanitizePercentage(source.starIntensity, DEFAULT_STAR_INTENSITY),
       colors: { ...preset.colors }
     };
   }
@@ -139,6 +163,7 @@ function normalizeSettings(settings) {
   return {
     enabled: typeof source.enabled === "boolean" ? source.enabled : DEFAULT_SETTINGS.enabled,
     presetId,
+    starIntensity: sanitizePercentage(source.starIntensity, DEFAULT_STAR_INTENSITY),
     colors: {
       pageBackground: sanitizeColor(colors.pageBackground, DEFAULT_SETTINGS.colors.pageBackground),
       surfaceBackground: sanitizeColor(colors.surfaceBackground, DEFAULT_SETTINGS.colors.surfaceBackground),
@@ -186,6 +211,13 @@ function renderPresetCards() {
     swatches.className = "swatches";
     swatches.setAttribute("aria-hidden", "true");
 
+    if (preset.hasBackgroundImage) {
+      const imageSwatch = document.createElement("span");
+      imageSwatch.className = "swatch swatch-image";
+      imageSwatch.style.backgroundImage = `url("${chrome.runtime.getURL("assets/night-sky.jpg")}")`;
+      swatches.append(imageSwatch);
+    }
+
     Object.values(preset.colors).forEach((color) => {
       const swatch = document.createElement("span");
       swatch.className = "swatch";
@@ -208,6 +240,9 @@ function renderSettings(settings) {
   elements.pageBackground.value = settings.colors.pageBackground;
   elements.surfaceBackground.value = settings.colors.surfaceBackground;
   elements.textColor.value = settings.colors.textColor;
+  elements.starIntensity.value = String(settings.starIntensity);
+  elements.starIntensityValue.textContent = `${settings.starIntensity}%`;
+  elements.starIntensityField.hidden = selectedPresetId !== STARRY_PRESET_ID;
 
   document.querySelectorAll(".preset-card").forEach((button) => {
     const isSelected = button.dataset.presetId === selectedPresetId;
@@ -298,6 +333,13 @@ function handleColorChange(event) {
   updateColorSetting(event, false);
 }
 
+function updateStarIntensity(deferSave) {
+  updateSettings({
+    ...currentSettings,
+    starIntensity: Number(elements.starIntensity.value)
+  }, { deferSave });
+}
+
 function handlePresetKeydown(event) {
   const buttons = Array.from(elements.presetGrid.querySelectorAll(".preset-card"));
   const currentIndex = buttons.indexOf(document.activeElement);
@@ -352,6 +394,8 @@ function bindEvents() {
   elements.pageBackground.addEventListener("change", handleColorChange);
   elements.surfaceBackground.addEventListener("change", handleColorChange);
   elements.textColor.addEventListener("change", handleColorChange);
+  elements.starIntensity.addEventListener("input", () => updateStarIntensity(true));
+  elements.starIntensity.addEventListener("change", () => updateStarIntensity(false));
 
   elements.resetButton.addEventListener("click", () => {
     updateSettings(cloneSettings(DEFAULT_SETTINGS));

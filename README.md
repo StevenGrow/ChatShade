@@ -15,20 +15,22 @@ ChatShade is an independent third-party browser extension and is not affiliated 
 - [Install from the Chrome Web Store](https://chromewebstore.google.com/detail/chatshade/gnbjdekebgnifnnohilgefdikifdgbh)
 - [Install from Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/npknldohcppjbmiealoaelfahhpaokjb)
 
-The first public release was `v0.1.0`. The current source version is `v0.2.2`.
+The first public release was `v0.1.0`. The current source version is `v0.3.0`.
 
 ## Features
 
 - Runs only on `https://chatgpt.com/*`.
 - One switch to enable or disable ChatShade.
 - English and Simplified Chinese UI that follows the browser interface language.
-- Six built-in presets:
+- Seven built-in presets:
   - Soft Ivory / 柔和米白
   - Warm Gray / 暖灰
   - Restful Green / 护眼绿
   - Mist Blue / 雾蓝灰
   - Blush Pink / 柔粉
   - Night Moss / 墨绿夜读
+  - Starry Night / 星空夜读
+- Adjustable star intensity for the Starry Night preset, with live updates and a remembered setting.
 - Custom color pickers for:
   - Page background
   - Conversation/content surface
@@ -46,6 +48,8 @@ ChatShade/
 │   ├── en/messages.json
 │   └── zh_CN/messages.json
 ├── manifest.json
+├── assets/
+│   └── night-sky.jpg
 ├── content/
 │   ├── content.js
 │   └── content.css
@@ -86,6 +90,7 @@ This MVP therefore uses a conservative styling model:
 - The popup writes settings only to extension storage. It does not inspect the active tab or request the `tabs` permission.
 - The content script listens to `chrome.storage.onChanged`, so open ChatGPT pages update without a manual refresh in most cases.
 - `v0.2.0` keeps the same permissions while adding a dark reading preset and more targeted compatibility rules for ChatGPT's composer and empty conversation areas.
+- `v0.3.0` adds a bundled starry background preset and a theme-specific intensity control without adding network access.
 
 Selectors that may need real-page tuning later are intentionally kept in `content/content.css`, especially those involving `data-testid`, `data-message-author-role`, and class fragments such as `composer`, `prompt`, `thread`, or `conversation`.
 

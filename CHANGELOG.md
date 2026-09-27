@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.0
+
+- Added the Starry Night / 星空夜读 preset with a bundled, offline night-sky background.
+- Added a theme-specific star intensity slider with live preview and persisted settings.
+- Kept existing solid-color presets unchanged and added no new permissions or network requests.
+
 ## v0.2.2
 
 - Adapted ChatGPT page, sidebar, header, and composer theme rules for the latest site structure.

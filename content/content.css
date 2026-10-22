@@ -87,10 +87,8 @@ html[data-chatshade-enabled="true"] div[class*="conversation"] {
   color: var(--chatshade-text-color) !important;
 }
 
+/* Root-level siblings can be full-screen portal layers; leave their backgrounds intact. */
 html[data-chatshade-enabled="true"] :is(
-  body > div,
-  #__next > div,
-  #root > div,
   [data-testid="chatgpt-app"] > div,
   [data-testid="chat-page"] > div,
   [class*="bg-token-main-surface-primary"],
@@ -510,9 +508,6 @@ html[data-chatshade-enabled="true"][data-chatshade-preset="starry-night"] {
 html[data-chatshade-enabled="true"][data-chatshade-preset="starry-night"] :is(
   #__next,
   #root,
-  body > div,
-  #__next > div,
-  #root > div,
   main,
   [role="main"],
   [data-testid="chatgpt-app"],

@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.3.1
+
+- Fixed a compatibility issue with ChatGPT's current full-screen portal layer that could cover the entire page when ChatShade was enabled.
+- Kept the sidebar, conversation, and composer visible while applying every preset theme.
+
 ## v0.3.0
 
 - Added the Starry Night / 星空夜读 preset with a bundled, offline night-sky background.
